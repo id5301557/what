@@ -37,6 +37,111 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
 .archive-page .relation-row span{color:#aaa99f}
 @media(max-width:700px){.relation-row{grid-template-columns:1fr;gap:7px}}
 
+
+/* v2: 내면 기록 / 생활 습관 UI */
+.inner-value{
+  padding:16px 20px;
+}
+.inner-table{
+  overflow:hidden;
+  border:1px solid rgba(110,128,117,.18);
+  border-radius:10px;
+  background:rgba(111,128,117,.035);
+  opacity:.72;
+}
+.inner-row{
+  display:grid;
+  grid-template-columns:74px 1fr;
+  min-height:48px;
+  border-bottom:1px solid rgba(110,128,117,.13);
+}
+.inner-row:last-child{
+  border-bottom:0;
+}
+.inner-key{
+  padding:14px 12px;
+  display:flex;
+  align-items:center;
+  color:#829088;
+  border-right:1px solid rgba(110,128,117,.13);
+  background:rgba(110,128,117,.035);
+  font:700 9px/1.35 monospace;
+  letter-spacing:.08em;
+}
+.inner-text{
+  padding:13px 16px;
+  display:flex;
+  align-items:center;
+  color:#657269;
+  font-size:12.5px;
+  line-height:1.7;
+}
+
+.habit-value{
+  padding:11px 28px;
+}
+.habit-list{
+  display:flex;
+  flex-direction:column;
+}
+.habit-line{
+  position:relative;
+  min-height:38px;
+  padding:9px 8px 9px 28px;
+  display:flex;
+  align-items:center;
+  color:#5f6d64;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  font-size:13px;
+  line-height:1.55;
+}
+.habit-line:last-child{
+  border-bottom:0;
+}
+.habit-line::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  width:8px;
+  height:1px;
+  background:var(--accent);
+  opacity:.52;
+}
+
+/* 셸터 기록용 */
+.archive-page .inner-table{
+  border-color:rgba(197,163,101,.15);
+  background:rgba(197,163,101,.025);
+  opacity:.67;
+}
+.archive-page .inner-row{
+  border-color:rgba(197,163,101,.11);
+}
+.archive-page .inner-key{
+  color:#8f887a;
+  border-color:rgba(197,163,101,.11);
+  background:rgba(197,163,101,.025);
+}
+.archive-page .inner-text{
+  color:#a4aaa3;
+}
+.archive-page .habit-line{
+  color:#a7ada6;
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-line::before{
+  background:var(--amber);
+  opacity:.46;
+}
+
+@media(max-width:700px){
+  .inner-value{padding:10px 14px 16px}
+  .inner-row{grid-template-columns:64px 1fr}
+  .inner-key{padding:12px 10px}
+  .inner-text{padding:12px 13px}
+  .habit-value{padding:5px 18px 14px}
+}
+
 </style>
 </head>
 <body class="" style="--accent:#4f7fd8">
@@ -61,10 +166,8 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">나른함 · 침착 · 호기심 강함 · 여유 · 마이페이스 · 능글 · 은근한 괴짜</div>
-    <div class="label">내면 기록</div><div class="value">욕구: 미지의 생물학적 현상을 이해하고 싶어함.
-결핍: 흥미로운 문제 앞에서는 호기심을 우선하기 쉬움.</div>
-    <div class="label">외형 / APPEARANCE</div><div class="value">201cm · 큰 골격과 넓은 어깨 · 푸른빛의 창백한 회백 피부 · 짙은 남청 장발/로우 포니테일 · 옅은 회청색의 나른한 눈 · 삼각 상어이빨 · 목 양옆의 얕게 갈라진 상어형 아가미선 · 흰 가운+남색 셔츠 · 가끔 검은 사각안경</div>
-    <div class="label">생활 습관</div><div class="value">이상 수치 재검 · 정확한 시각 기록 · 업무 외에는 느슨하고 책상은 어수선 · 건조한 농담</div>
+    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">미지의 생물학적 현상을 이해하고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">흥미로운 문제 앞에서는 호기심을 우선하기 쉬움.</div></div></div></div>
+    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">이상 수치 재검</div><div class="habit-line">정확한 시각 기록</div><div class="habit-line">업무 외에는 느슨하고 책상은 어수선</div><div class="habit-line">건조한 농담</div></div></div>
   </section>
 
   <section class="relation-record">
@@ -81,7 +184,7 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   <details class="restricted">
     <summary>RESTRICTED / PRIVATE BIOLOGICAL RECORD — 클릭하여 열람</summary>
     <div class="inside">
-      <div class="rrow"><b>신체</b><span>상어계 강한 발현 · 골반 양측 한 쌍의 교미기 · 보통 한쪽 사용 · 끝에 짧고 유연한 후향 갈고리 돌기 · 청회색</span></div><div class="rrow"><b>리비도</b><span>중간</span></div><div class="rrow"><b>포지션</b><span>강한 기본 주도</span></div><div class="rrow"><b>취향</b><span>느린 페이스 · 반응 관찰 · 새로운 자극/변주 · 가벼운 도발</span></div><div class="rrow"><b>특징</b><span>흥미가 생기면 같은 패턴보다 반응 차이를 보기 위해 여러 변주를 시도하며, 상대의 반응 자체를 즐김</span></div>
+      <div class="rrow"><b>신체</b><span>상어계 강한 발현 · 골반 양측 한 쌍의 교미기 · 보통 한쪽 사용 · 끝에 짧고 유연한 후향 갈고리 돌기 · 청회색</span></div><div class="rrow"><b>취향</b><span>느린 페이스 · 반응 관찰 · 새로운 자극/변주 · 가벼운 도발</span></div><div class="rrow"><b>특징</b><span>흥미가 생기면 같은 패턴보다 반응 차이를 보기 위해 여러 변주를 시도하며, 상대의 반응 자체를 즐김</span></div>
     </div>
   </details>
   <footer class="footer"><span>CITY NETWORK · CIVIL REGISTRY</span><span>PERSONAL RECORD / NERO</span></footer>

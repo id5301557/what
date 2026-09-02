@@ -37,6 +37,111 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
 .archive-page .relation-row span{color:#aaa99f}
 @media(max-width:700px){.relation-row{grid-template-columns:1fr;gap:7px}}
 
+
+/* v2: 내면 기록 / 생활 습관 UI */
+.inner-value{
+  padding:16px 20px;
+}
+.inner-table{
+  overflow:hidden;
+  border:1px solid rgba(110,128,117,.18);
+  border-radius:10px;
+  background:rgba(111,128,117,.035);
+  opacity:.72;
+}
+.inner-row{
+  display:grid;
+  grid-template-columns:74px 1fr;
+  min-height:48px;
+  border-bottom:1px solid rgba(110,128,117,.13);
+}
+.inner-row:last-child{
+  border-bottom:0;
+}
+.inner-key{
+  padding:14px 12px;
+  display:flex;
+  align-items:center;
+  color:#829088;
+  border-right:1px solid rgba(110,128,117,.13);
+  background:rgba(110,128,117,.035);
+  font:700 9px/1.35 monospace;
+  letter-spacing:.08em;
+}
+.inner-text{
+  padding:13px 16px;
+  display:flex;
+  align-items:center;
+  color:#657269;
+  font-size:12.5px;
+  line-height:1.7;
+}
+
+.habit-value{
+  padding:11px 28px;
+}
+.habit-list{
+  display:flex;
+  flex-direction:column;
+}
+.habit-line{
+  position:relative;
+  min-height:38px;
+  padding:9px 8px 9px 28px;
+  display:flex;
+  align-items:center;
+  color:#5f6d64;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  font-size:13px;
+  line-height:1.55;
+}
+.habit-line:last-child{
+  border-bottom:0;
+}
+.habit-line::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  width:8px;
+  height:1px;
+  background:var(--accent);
+  opacity:.52;
+}
+
+/* 셸터 기록용 */
+.archive-page .inner-table{
+  border-color:rgba(197,163,101,.15);
+  background:rgba(197,163,101,.025);
+  opacity:.67;
+}
+.archive-page .inner-row{
+  border-color:rgba(197,163,101,.11);
+}
+.archive-page .inner-key{
+  color:#8f887a;
+  border-color:rgba(197,163,101,.11);
+  background:rgba(197,163,101,.025);
+}
+.archive-page .inner-text{
+  color:#a4aaa3;
+}
+.archive-page .habit-line{
+  color:#a7ada6;
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-line::before{
+  background:var(--amber);
+  opacity:.46;
+}
+
+@media(max-width:700px){
+  .inner-value{padding:10px 14px 16px}
+  .inner-row{grid-template-columns:64px 1fr}
+  .inner-key{padding:12px 10px}
+  .inner-text{padding:12px 13px}
+  .habit-value{padding:5px 18px 14px}
+}
+
 </style>
 </head>
 <body class="" style="--accent:#6f8c78">
@@ -61,10 +166,8 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">눈치 빠름 · 경계 강함 · 현실적 · 책임감 · 말이 날카로움</div>
-    <div class="label">내면 기록</div><div class="value">욕구: 생활과 자신의 책임 범위를 안정적으로 유지하고 싶어함.
-결핍: 불확실할수록 최악의 경우부터 가정하는 경향.</div>
-    <div class="label">외형 / APPEARANCE</div><div class="value">169cm · 늘씬한 잔근육 · 검은 레이어드 중단발 · 올리브그린의 날카로운 눈 · 검은 고양이귀+긴 꼬리 · 차콜 재킷과 실용적인 도시복</div>
-    <div class="label">생활 습관</div><div class="value">핵심부터 질문 · 영수증/배송기록 보관 · 배터리 40% 이하를 싫어함</div>
+    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">생활과 자신의 책임 범위를 안정적으로 유지하고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">불확실할수록 최악의 경우부터 가정하는 경향.</div></div></div></div>
+    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">핵심부터 질문</div><div class="habit-line">영수증/배송기록 보관</div><div class="habit-line">배터리 40% 이하를 싫어함</div></div></div>
   </section>
 
   <section class="relation-record">
@@ -89,7 +192,7 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   <details class="restricted">
     <summary>RESTRICTED / PRIVATE BIOLOGICAL RECORD — 클릭하여 열람</summary>
     <div class="inside">
-      <div class="rrow"><b>신체</b><span>고양잇과 약~중간 발현 · 외부 인간형 · 촉각 민감 + 유도배란계의 약한 호르몬 흔적</span></div><div class="rrow"><b>리비도</b><span>중간</span></div><div class="rrow"><b>포지션</b><span>스위치 · 자기 페이스 중시</span></div><div class="rrow"><b>취향</b><span>밀착 · 감각 자극 · 밀고 당기기 · 도발 주고받기</span></div><div class="rrow"><b>특징</b><span>동정 · 먼저 약올리지만 상대가 예상 밖으로 맞받아치면 쉽게 흐트러짐</span></div>
+      <div class="rrow"><b>신체</b><span>고양잇과 약~중간 발현 · 외부 인간형 · 촉각 민감 + 유도배란계의 약한 호르몬 흔적</span></div><div class="rrow"><b>취향</b><span>밀착 · 감각 자극 · 밀고 당기기 · 도발 주고받기</span></div><div class="rrow"><b>특징</b><span>동정 · 먼저 약올리지만 상대가 예상 밖으로 맞받아치면 쉽게 흐트러짐</span></div>
     </div>
   </details>
   <footer class="footer"><span>CITY NETWORK · CIVIL REGISTRY</span><span>PERSONAL RECORD / MIU</span></footer>

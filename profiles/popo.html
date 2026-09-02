@@ -37,6 +37,111 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
 .archive-page .relation-row span{color:#aaa99f}
 @media(max-width:700px){.relation-row{grid-template-columns:1fr;gap:7px}}
 
+
+/* v2: 내면 기록 / 생활 습관 UI */
+.inner-value{
+  padding:16px 20px;
+}
+.inner-table{
+  overflow:hidden;
+  border:1px solid rgba(110,128,117,.18);
+  border-radius:10px;
+  background:rgba(111,128,117,.035);
+  opacity:.72;
+}
+.inner-row{
+  display:grid;
+  grid-template-columns:74px 1fr;
+  min-height:48px;
+  border-bottom:1px solid rgba(110,128,117,.13);
+}
+.inner-row:last-child{
+  border-bottom:0;
+}
+.inner-key{
+  padding:14px 12px;
+  display:flex;
+  align-items:center;
+  color:#829088;
+  border-right:1px solid rgba(110,128,117,.13);
+  background:rgba(110,128,117,.035);
+  font:700 9px/1.35 monospace;
+  letter-spacing:.08em;
+}
+.inner-text{
+  padding:13px 16px;
+  display:flex;
+  align-items:center;
+  color:#657269;
+  font-size:12.5px;
+  line-height:1.7;
+}
+
+.habit-value{
+  padding:11px 28px;
+}
+.habit-list{
+  display:flex;
+  flex-direction:column;
+}
+.habit-line{
+  position:relative;
+  min-height:38px;
+  padding:9px 8px 9px 28px;
+  display:flex;
+  align-items:center;
+  color:#5f6d64;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  font-size:13px;
+  line-height:1.55;
+}
+.habit-line:last-child{
+  border-bottom:0;
+}
+.habit-line::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  width:8px;
+  height:1px;
+  background:var(--accent);
+  opacity:.52;
+}
+
+/* 셸터 기록용 */
+.archive-page .inner-table{
+  border-color:rgba(197,163,101,.15);
+  background:rgba(197,163,101,.025);
+  opacity:.67;
+}
+.archive-page .inner-row{
+  border-color:rgba(197,163,101,.11);
+}
+.archive-page .inner-key{
+  color:#8f887a;
+  border-color:rgba(197,163,101,.11);
+  background:rgba(197,163,101,.025);
+}
+.archive-page .inner-text{
+  color:#a4aaa3;
+}
+.archive-page .habit-line{
+  color:#a7ada6;
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-line::before{
+  background:var(--amber);
+  opacity:.46;
+}
+
+@media(max-width:700px){
+  .inner-value{padding:10px 14px 16px}
+  .inner-row{grid-template-columns:64px 1fr}
+  .inner-key{padding:12px 10px}
+  .inner-text{padding:12px 13px}
+  .habit-value{padding:5px 18px 14px}
+}
+
 </style>
 </head>
 <body class="" style="--accent:#c98746">
@@ -61,10 +166,8 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">붙임성 좋음 · 솔직 · 행동파 · 현실적 친절</div>
-    <div class="label">내면 기록</div><div class="value">욕구: 눈앞의 문제를 직접 해결하고, 실제로 도움이 되는 사람이 되고 싶어함.
-결핍: 도움과 개입 사이의 경계가 흐려지기 쉬움.</div>
-    <div class="label">외형 / APPEARANCE</div><div class="value">190cm · 넓은 어깨와 생활근육 · 초코갈색 부스스한 숏헤어 · 황금~호박색 처진 눈 · 한쪽은 선 귀, 한쪽은 접힌 귀 · 순하고 듬직한 인상 · 작업셔츠+다포켓 베스트</div>
-    <div class="label">생활 습관</div><div class="value">공구를 만지작거림 · 볼트/케이블타이 휴대 · 문자보다 전화 선호 · 무자각 스킨십이 잦음</div>
+    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">눈앞의 문제를 직접 해결하고, 실제로 도움이 되는 사람이 되고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">도움과 개입 사이의 경계가 흐려지기 쉬움.</div></div></div></div>
+    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">공구를 만지작거림</div><div class="habit-line">볼트/케이블타이 휴대</div><div class="habit-line">문자보다 전화 선호</div><div class="habit-line">무자각 스킨십이 잦음</div></div></div>
   </section>
 
   <section class="relation-record">
@@ -81,7 +184,7 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   <details class="restricted">
     <summary>RESTRICTED / PRIVATE BIOLOGICAL RECORD — 클릭하여 열람</summary>
     <div class="inside">
-      <div class="rrow"><b>신체</b><span>개과 중간 발현 · 인간형 + 기저부 팽창성 조직 + 퇴화한 baculum계 지지조직</span></div><div class="rrow"><b>리비도</b><span>중~높음</span></div><div class="rrow"><b>포지션</b><span>기본 주도 · 서비스 성향</span></div><div class="rrow"><b>취향</b><span>밀착·접촉 많음 · 체격차/힘차이를 활용한 플레이 · 직접적 애정표현 · 외설적인 언행</span></div><div class="rrow"><b>특징</b><span>순한 평소 인상과 달리 관계 시 큰 체격과 힘을 적극적으로 사용함</span></div>
+      <div class="rrow"><b>신체</b><span>개과 중간 발현 · 인간형 + 기저부 팽창성 조직 + 퇴화한 baculum계 지지조직</span></div><div class="rrow"><b>취향</b><span>밀착·접촉 많음 · 체격차/힘차이를 활용한 플레이 · 직접적 애정표현 · 외설적인 언행</span></div><div class="rrow"><b>특징</b><span>순한 평소 인상과 달리 관계 시 큰 체격과 힘을 적극적으로 사용함</span></div>
     </div>
   </details>
   <footer class="footer"><span>CITY NETWORK · CIVIL REGISTRY</span><span>PERSONAL RECORD / POPO</span></footer>

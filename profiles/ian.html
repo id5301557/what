@@ -37,6 +37,111 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
 .archive-page .relation-row span{color:#aaa99f}
 @media(max-width:700px){.relation-row{grid-template-columns:1fr;gap:7px}}
 
+
+/* v2: 내면 기록 / 생활 습관 UI */
+.inner-value{
+  padding:16px 20px;
+}
+.inner-table{
+  overflow:hidden;
+  border:1px solid rgba(110,128,117,.18);
+  border-radius:10px;
+  background:rgba(111,128,117,.035);
+  opacity:.72;
+}
+.inner-row{
+  display:grid;
+  grid-template-columns:74px 1fr;
+  min-height:48px;
+  border-bottom:1px solid rgba(110,128,117,.13);
+}
+.inner-row:last-child{
+  border-bottom:0;
+}
+.inner-key{
+  padding:14px 12px;
+  display:flex;
+  align-items:center;
+  color:#829088;
+  border-right:1px solid rgba(110,128,117,.13);
+  background:rgba(110,128,117,.035);
+  font:700 9px/1.35 monospace;
+  letter-spacing:.08em;
+}
+.inner-text{
+  padding:13px 16px;
+  display:flex;
+  align-items:center;
+  color:#657269;
+  font-size:12.5px;
+  line-height:1.7;
+}
+
+.habit-value{
+  padding:11px 28px;
+}
+.habit-list{
+  display:flex;
+  flex-direction:column;
+}
+.habit-line{
+  position:relative;
+  min-height:38px;
+  padding:9px 8px 9px 28px;
+  display:flex;
+  align-items:center;
+  color:#5f6d64;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  font-size:13px;
+  line-height:1.55;
+}
+.habit-line:last-child{
+  border-bottom:0;
+}
+.habit-line::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  width:8px;
+  height:1px;
+  background:var(--accent);
+  opacity:.52;
+}
+
+/* 셸터 기록용 */
+.archive-page .inner-table{
+  border-color:rgba(197,163,101,.15);
+  background:rgba(197,163,101,.025);
+  opacity:.67;
+}
+.archive-page .inner-row{
+  border-color:rgba(197,163,101,.11);
+}
+.archive-page .inner-key{
+  color:#8f887a;
+  border-color:rgba(197,163,101,.11);
+  background:rgba(197,163,101,.025);
+}
+.archive-page .inner-text{
+  color:#a4aaa3;
+}
+.archive-page .habit-line{
+  color:#a7ada6;
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-line::before{
+  background:var(--amber);
+  opacity:.46;
+}
+
+@media(max-width:700px){
+  .inner-value{padding:10px 14px 16px}
+  .inner-row{grid-template-columns:64px 1fr}
+  .inner-key{padding:12px 10px}
+  .inner-text{padding:12px 13px}
+  .habit-value{padding:5px 18px 14px}
+}
+
 </style>
 </head>
 <body class="archive-page" style="--accent:#c4a164">
@@ -61,16 +166,13 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">까칠 · 예민 · 시니컬 · 자존심 강함 · 경계 강함 · 은근히 정 많음</div>
-    <div class="label">내면 기록</div><div class="value">욕구: 자신의 판단과 능력을 성인으로 인정받고, 셸터에서의 삶의 가치를 확인하고 싶어함.
-결핍: 약함·애착·도움 요청을 통제 상실처럼 느끼는 경향.
-모순: 간섭받기는 싫지만 걱정하는 상대에게는 안전을 이유로 간섭함.</div>
-    <div class="label">외형 / APPEARANCE</div><div class="value">183cm · 슬림한 실전형 근육체형 · 창백한 인간 피부 · 샌드/애쉬블론드 크루컷 · 선명한 적안+날카로운 눈 · 동물 특징 없음/인간 귀만 · 검정 정화마스크+보호장비</div>
-    <div class="label">생활 습관</div><div class="value">출입구·환기구 확인 · 필터 잔량 계산 · 장비 즉시 정리 · 걱정하는 상대의 장비를 말없이 점검한 뒤 결함만 지적</div>
+    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">자신의 판단과 능력을 성인으로 인정받고, 셸터에서의 삶의 가치를 확인하고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">약함·애착·도움 요청을 통제 상실처럼 느끼는 경향.</div></div><div class="inner-row"><div class="inner-key">모순</div><div class="inner-text">간섭받기는 싫지만 걱정하는 상대에게는 안전을 이유로 간섭함.</div></div></div></div>
+    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">출입구 · 환기구 확인</div><div class="habit-line">필터 잔량 계산</div><div class="habit-line">장비 즉시 정리</div><div class="habit-line">걱정하는 상대의 장비를 말없이 점검한 뒤 결함만 지적</div></div></div>
   </section>
   <details class="restricted">
     <summary>RESTRICTED / PRIVATE BIOLOGICAL RECORD — 클릭하여 열람</summary>
     <div class="inside">
-      <div class="rrow"><b>신체</b><span>원형인간 · 단일 인간형 생식구조 · 굵은 핏줄 · 옅은 분홍색</span></div><div class="rrow"><b>리비도</b><span>중간</span></div><div class="rrow"><b>포지션</b><span>강한 기본 주도 · 깔리거나 일방적으로 통제되는 상황 비선호</span></div><div class="rrow"><b>취향</b><span>자기 페이스 · 밀착 · 도발 · 직접적인 욕구 표현 · 폐쇄적인 사적 공간</span></div><div class="rrow"><b>특징</b><span>동정 · 상대가 맞받아치거나 주도권을 노리면 경쟁심이 올라 더 적극적으로 우위를 되찾으려 함</span></div>
+      <div class="rrow"><b>신체</b><span>원형인간 · 단일 인간형 생식구조 · 굵은 핏줄 · 옅은 분홍색</span></div><div class="rrow"><b>취향</b><span>자기 페이스 · 밀착 · 도발 · 직접적인 욕구 표현 · 폐쇄적인 사적 공간</span></div><div class="rrow"><b>특징</b><span>동정 · 상대가 맞받아치거나 주도권을 노리면 경쟁심이 올라 더 적극적으로 우위를 되찾으려 함</span></div>
     </div>
   </details>
   <footer class="footer"><span>SHELTER NO.435 / ARCHIVE COPY</span><span>PERSONAL RECORD / IAN CARTER</span></footer>

@@ -37,6 +37,111 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
 .archive-page .relation-row span{color:#aaa99f}
 @media(max-width:700px){.relation-row{grid-template-columns:1fr;gap:7px}}
 
+
+/* v2: 내면 기록 / 생활 습관 UI */
+.inner-value{
+  padding:16px 20px;
+}
+.inner-table{
+  overflow:hidden;
+  border:1px solid rgba(110,128,117,.18);
+  border-radius:10px;
+  background:rgba(111,128,117,.035);
+  opacity:.72;
+}
+.inner-row{
+  display:grid;
+  grid-template-columns:74px 1fr;
+  min-height:48px;
+  border-bottom:1px solid rgba(110,128,117,.13);
+}
+.inner-row:last-child{
+  border-bottom:0;
+}
+.inner-key{
+  padding:14px 12px;
+  display:flex;
+  align-items:center;
+  color:#829088;
+  border-right:1px solid rgba(110,128,117,.13);
+  background:rgba(110,128,117,.035);
+  font:700 9px/1.35 monospace;
+  letter-spacing:.08em;
+}
+.inner-text{
+  padding:13px 16px;
+  display:flex;
+  align-items:center;
+  color:#657269;
+  font-size:12.5px;
+  line-height:1.7;
+}
+
+.habit-value{
+  padding:11px 28px;
+}
+.habit-list{
+  display:flex;
+  flex-direction:column;
+}
+.habit-line{
+  position:relative;
+  min-height:38px;
+  padding:9px 8px 9px 28px;
+  display:flex;
+  align-items:center;
+  color:#5f6d64;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  font-size:13px;
+  line-height:1.55;
+}
+.habit-line:last-child{
+  border-bottom:0;
+}
+.habit-line::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  width:8px;
+  height:1px;
+  background:var(--accent);
+  opacity:.52;
+}
+
+/* 셸터 기록용 */
+.archive-page .inner-table{
+  border-color:rgba(197,163,101,.15);
+  background:rgba(197,163,101,.025);
+  opacity:.67;
+}
+.archive-page .inner-row{
+  border-color:rgba(197,163,101,.11);
+}
+.archive-page .inner-key{
+  color:#8f887a;
+  border-color:rgba(197,163,101,.11);
+  background:rgba(197,163,101,.025);
+}
+.archive-page .inner-text{
+  color:#a4aaa3;
+}
+.archive-page .habit-line{
+  color:#a7ada6;
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-line::before{
+  background:var(--amber);
+  opacity:.46;
+}
+
+@media(max-width:700px){
+  .inner-value{padding:10px 14px 16px}
+  .inner-row{grid-template-columns:64px 1fr}
+  .inner-key{padding:12px 10px}
+  .inner-text{padding:12px 13px}
+  .habit-value{padding:5px 18px 14px}
+}
+
 </style>
 </head>
 <body class="" style="--accent:#7b62c9">
@@ -61,10 +166,8 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">냉정 · 원칙주의 · 신중 · 의심 많음 · 책임감</div>
-    <div class="label">내면 기록</div><div class="value">욕구: 예외 상황까지 절차 안에서 안전하게 처리하고 싶어함.
-결핍: 규칙 밖에서의 유연한 판단이 느림.</div>
-    <div class="label">외형 / APPEARANCE</div><div class="value">185cm · 마른 정제 체형 · 창백한 초록빛 피부 · 보라색 짧은 포마드풍 머리 · 황금색 세로동공 · 보랏빛 갈라진 혀+송곳니 · 검정~남보라 정장</div>
-    <div class="label">생활 습관</div><div class="value">메모마다 시각 기록 · 질문은 한 번에 하나 · 통화 후 즉시 정리 · 유행문화에 약함</div>
+    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">예외 상황까지 절차 안에서 안전하게 처리하고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">규칙 밖에서의 유연한 판단이 느림.</div></div></div></div>
+    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">메모마다 시각 기록</div><div class="habit-line">질문은 한 번에 하나</div><div class="habit-line">통화 후 즉시 정리</div><div class="habit-line">유행문화에 약함</div></div></div>
   </section>
 
   <section class="relation-record">
@@ -81,7 +184,7 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   <details class="restricted">
     <summary>RESTRICTED / PRIVATE BIOLOGICAL RECORD — 클릭하여 열람</summary>
     <div class="inside">
-      <div class="rrow"><b>신체</b><span>뱀계 강한 발현 · paired hemipenes · 평소 골반 생식공 내부 좌우 수납 → 필요 시 한쪽 외번 · 양측 기능</span></div><div class="rrow"><b>리비도</b><span>낮음~중간</span></div><div class="rrow"><b>포지션</b><span>강한 기본 주도</span></div><div class="rrow"><b>취향</b><span>규칙 설정 · 허락/금지 · 명확한 지시 · 기다림 · 구속</span></div><div class="rrow"><b>특징</b><span>합의된 범위 안에서 상대가 주도권을 맡기고 지시를 따르는 구조를 선호</span></div>
+      <div class="rrow"><b>신체</b><span>뱀계 강한 발현 · paired hemipenes · 평소 골반 생식공 내부 좌우 수납 → 필요 시 한쪽 외번 · 양측 기능</span></div><div class="rrow"><b>취향</b><span>규칙 설정 · 허락/금지 · 명확한 지시 · 기다림 · 구속</span></div><div class="rrow"><b>특징</b><span>합의된 범위 안에서 상대가 주도권을 맡기고 지시를 따르는 구조를 선호</span></div>
     </div>
   </details>
   <footer class="footer"><span>CITY NETWORK · CIVIL REGISTRY</span><span>PERSONAL RECORD / RIO</span></footer>
