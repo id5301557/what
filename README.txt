@@ -1,38 +1,26 @@
-CIVIC SITE v2 — RECORD PAGES
+CIVIC mystery Ian + mobile gallery patch
 
-추가된 기능
------------
-- WORLD 섹션 → world.html 상세 세계관 페이지
-- 6명 시민 네임카드 → profiles/*.html 개인 상세 기록 페이지
-- 이안 카드 → profiles/ian.html 셸터 전용 상세 기록 페이지
-- 상세페이지는 생활기록부/개인기록부 스타일
-- 성적/생물학적 특징은 RESTRICTED 접이식 영역으로 숨김
-- 세계관의 원형인간·진실 설정도 RESTRICTED ARCHIVE로 접어둠
+변경
+----
+1. index.html
+   - 이안 영역을 클릭 전에는 ???로 완전히 은폐
+   - 이안 카드/이름/이미지는 공개 화면에서 숨김
+   - hover 시 노이즈 + RGB 어긋남 느낌의 글리치
+   - 클릭 시 기존 profiles/ian.html로 이동
+   - 공개 화면의 SHELTER NO.435 직접 노출도 UNKNOWN 정보로 교체
 
-GitHub 구조
------------
-index.html
-style.css
-script.js
-world.html
-profiles/
-  popo.html
-  miu.html
-  nero.html
-  rio.html
-  mary.html
-  lulu.html
-  ian.html
-images/
-  moving.png
-  cards/*.png
+2. gallery.html
+   - 이안 폴더를 ??? / UNKNOWN RECORD로 은폐
+   - hover 시 노이즈 + 글리치
+   - 클릭 시 gallery/ian.html로 이동
+   - 하단 폴더 수 표기도 6 REGISTERED / 1 UNKNOWN으로 변경
 
-moving.png은 루트보다 images/moving.png 권장.
+3. gallery/*.html
+   - 7명 전부 모바일 증사 영역 높이 축소
+   - 기존 full-body 기준 560px 최소높이 제거
+   - 모바일에서 증사 위쪽 불필요한 여백 감소
+   - PC 레이아웃은 유지
 
-
-v3 변경
--------
-- 상세페이지에서 speech / caution / extra / route 성격의 표시 항목 삭제
-  (발화 특성 / 해석 주의 / 수인 사회 인식 / 등장 동선)
-- 사용자 제공 기존 관계만 RELATION RECORD로 추가
-- 이안은 명시된 기존 관계가 없어서 관계 섹션 미표시
+적용
+----
+ZIP을 레포지토리 루트에 덮어쓰기.

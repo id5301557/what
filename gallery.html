@@ -69,6 +69,102 @@ h1{margin:16px 0 18px;font:900 clamp(52px,9vw,118px)/.85 "Arial Narrow",Arial,sa
   filter:drop-shadow(0 14px 18px rgba(0,0,0,.25));
 }
 
+
+/* v6 / UNKNOWN gallery folder */
+.folder.ian.unknown-folder{
+  position:relative;
+  grid-column:1/-1;
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid rgba(197,163,101,.30);
+  background:#101411;
+  isolation:isolate;
+}
+.folder.ian.unknown-folder .thumb,
+.folder.ian.unknown-folder .folder-info{
+  display:none;
+}
+.folder.ian.unknown-folder::before{
+  content:"???";
+  position:relative;
+  z-index:4;
+  color:rgba(210,194,154,.76);
+  font:900 clamp(60px,10vw,126px)/1 "Courier New",monospace;
+  letter-spacing:.14em;
+  text-shadow:
+    3px 0 rgba(116,156,134,.16),
+    -3px 0 rgba(174,125,145,.14);
+}
+.folder.ian.unknown-folder::after{
+  content:"UNREGISTERED VISUAL DATA / CLICK TO ACCESS";
+  position:absolute;
+  z-index:4;
+  left:20px;
+  bottom:18px;
+  color:rgba(197,163,101,.42);
+  font:700 8px/1 monospace;
+  letter-spacing:.10em;
+}
+.folder.ian.unknown-folder .unknown-noise{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  opacity:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      transparent 0 13%,
+      rgba(151,181,159,.12) 13% 15%,
+      transparent 15% 47%,
+      rgba(183,132,151,.10) 47% 50%,
+      transparent 50% 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 5px,
+      rgba(255,255,255,.05) 6px
+    );
+}
+.folder.ian.unknown-folder:hover{
+  animation:folderJitter .30s steps(2,end) infinite;
+  box-shadow:0 0 0 1px rgba(197,163,101,.08),0 20px 55px rgba(0,0,0,.22);
+}
+.folder.ian.unknown-folder:hover::before{
+  animation:folderTextGlitch .20s steps(2,end) infinite;
+}
+.folder.ian.unknown-folder:hover .unknown-noise{
+  opacity:.78;
+  animation:folderNoise .16s steps(2,end) infinite;
+}
+@keyframes folderJitter{
+  0%{transform:translate(0)}
+  30%{transform:translate(2px,-1px)}
+  60%{transform:translate(-2px,1px)}
+  100%{transform:translate(0)}
+}
+@keyframes folderTextGlitch{
+  0%{transform:translateX(0)}
+  35%{transform:translateX(6px)}
+  70%{transform:translateX(-5px)}
+  100%{transform:translateX(0)}
+}
+@keyframes folderNoise{
+  0%{transform:translateX(-5px)}
+  50%{transform:translateX(6px)}
+  100%{transform:translateX(0)}
+}
+@media(max-width:760px){
+  .folder.ian.unknown-folder{
+    grid-column:auto;
+    min-height:230px;
+  }
+  .folder.ian.unknown-folder::before{
+    font-size:56px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -77,7 +173,7 @@ h1{margin:16px 0 18px;font:900 clamp(52px,9vw,118px)/.85 "Arial Narrow",Arial,sa
   <section class="hero">
     <div class="kicker">CITY NETWORK · PERSONAL VISUAL ARCHIVE</div>
     <h1>PHOTO<br>ARCHIVE</h1>
-    <p>시민별 시각 기록 보관함. 현재는 대표 전신 기록만 등록되어 있으며, 이후 일상·직업·개인 기록 사진을 각 폴더에 추가할 수 있다.</p>
+    <p>시민별 시각 기록 보관함. 등록된 개인 기록을 열람할 수 있으며, 일부 데이터는 출처가 확인되지 않는다.</p>
   </section>
   <section class="folder-grid">
     
@@ -123,15 +219,11 @@ h1{margin:16px 0 18px;font:900 clamp(52px,9vw,118px)/.85 "Arial Narrow",Arial,sa
     <em>01 FILE →</em>
   </div>
 </a>
-<a class="folder ian" href="./gallery/ian.html" style="--portrait-bg:#202620">
-  <div class="thumb"><img src="./images/portraits/ian.webp" alt="이안 카터 전신 이미지"></div>
-  <div class="folder-info">
-    <div><span>FIELD IMAGE RECORDS</span><b>IAN CARTER</b></div>
-    <em>01 FILE →</em>
-  </div>
+<a class="folder ian unknown-folder" href="./gallery/ian.html" aria-label="정체불명의 시각 기록 열람">
+  <span class="unknown-noise" aria-hidden="true"></span>
 </a>
   </section>
-  <footer class="footer"><span>CITY NETWORK · VISUAL ARCHIVE</span><span>7 REGISTERED FOLDERS</span></footer>
+  <footer class="footer"><span>CITY NETWORK · VISUAL ARCHIVE</span><span>6 REGISTERED / 1 UNKNOWN</span></footer>
 </main>
 </body>
 </html>

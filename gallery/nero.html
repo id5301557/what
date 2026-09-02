@@ -70,6 +70,48 @@ h1{margin:14px 0 0;font:900 clamp(48px,8vw,100px)/.88 "Arial Narrow",Arial,sans-
   }
 }
 
+
+/* v6 / mobile portrait compact layout */
+@media(max-width:760px){
+  .wrap{
+    margin-top:20px;
+  }
+
+  .album-grid{
+    margin-top:12px;
+  }
+
+  /* old full-body layout left too much vertical room for ID portraits */
+  .photo.hero-photo.id-portrait{
+    grid-column:auto;
+    grid-row:auto;
+    min-height:0;
+    height:clamp(340px,92vw,430px);
+  }
+
+  .photo.hero-photo.id-portrait img{
+    width:100%;
+    height:100%;
+    max-width:none;
+    max-height:none;
+    object-fit:contain;
+    object-position:center center;
+  }
+
+  .photo.hero-photo.id-portrait::before{
+    top:10px;
+    left:12px;
+    font-size:7px;
+  }
+
+  .caption{
+    left:8px;
+    right:8px;
+    bottom:8px;
+    padding:7px 8px;
+  }
+}
+
 </style>
 </head>
 <body class="" style="--accent:#4f7fd8">
