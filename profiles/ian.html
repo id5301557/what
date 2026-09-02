@@ -233,6 +233,123 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   .habit-value{padding:3px 18px 12px}
 }
 
+
+/* v4: visual record */
+.visual-record{
+  margin:36px clamp(22px,5vw,56px);
+  padding:24px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(112,141,121,.025), transparent),
+    #fbfcfa;
+}
+.visual-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+.visual-head div span{
+  display:block;
+  color:var(--accent);
+  font:800 10px/1 monospace;
+  letter-spacing:.1em;
+}
+.visual-head div b{
+  display:block;
+  margin-top:7px;
+  font-size:17px;
+  letter-spacing:-.02em;
+}
+.visual-head em{
+  color:#9aa49e;
+  font:normal 700 8px/1 monospace;
+  letter-spacing:.08em;
+}
+.fullbody-stage{
+  min-height:640px;
+  padding:34px 20px 14px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(110,128,117,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110,128,117,.035) 1px, transparent 1px);
+  background-size:28px 28px;
+}
+.fullbody-stage img{
+  display:block;
+  width:auto;
+  max-width:min(560px, 92%);
+  max-height:780px;
+  object-fit:contain;
+  filter:drop-shadow(0 22px 24px rgba(40,55,45,.08));
+}
+.visual-foot{
+  padding-top:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.visual-foot span{
+  color:#929d96;
+  font:700 8px/1 monospace;
+  letter-spacing:.09em;
+}
+.gallery-open{
+  padding:12px 15px;
+  border:1px solid color-mix(in srgb,var(--accent) 32%, #d8e0da);
+  color:var(--accent);
+  background:#fff;
+  font:800 9px/1 monospace;
+  letter-spacing:.08em;
+  transition:transform .18s ease,background .18s ease;
+}
+.gallery-open:hover{
+  transform:translateY(-2px);
+  background:color-mix(in srgb,var(--accent) 5%, white);
+}
+.archive-page .visual-record{
+  border-color:rgba(197,163,101,.24);
+  background:#141814;
+}
+.archive-page .visual-head{
+  border-color:rgba(197,163,101,.15);
+}
+.archive-page .visual-head div span{
+  color:var(--amber);
+}
+.archive-page .visual-head div b{
+  color:#d8d4c9;
+}
+.archive-page .visual-head em{
+  color:#77756c;
+}
+.archive-page .fullbody-stage{
+  background:
+    repeating-linear-gradient(0deg,transparent 0,transparent 4px,rgba(197,163,101,.018) 5px),
+    #111512;
+}
+.archive-page .fullbody-stage img{
+  filter:drop-shadow(0 22px 28px rgba(0,0,0,.28));
+}
+.archive-page .gallery-open{
+  color:var(--amber);
+  border-color:rgba(197,163,101,.28);
+  background:#111512;
+}
+@media(max-width:700px){
+  .visual-record{margin:24px 14px;padding:15px}
+  .visual-head{align-items:flex-start;flex-direction:column}
+  .fullbody-stage{min-height:440px;padding:24px 5px 10px}
+  .fullbody-stage img{max-width:96%;max-height:620px}
+  .visual-foot{align-items:flex-start;flex-direction:column}
+}
+
 </style>
 </head>
 <body class="archive-page" style="--accent:#c4a164">
@@ -249,6 +366,26 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
     <div class="code">👤 / HUMAN<br>24 / M / 183 CM<br>셸터 외부안전관리 · 경비</div>
   </section>
   <section class="card-wrap"><img src="../images/cards/ian.png" alt="이안 카터 프로필 카드"></section>
+  
+  <section class="visual-record">
+    <div class="visual-head">
+      <div>
+        <span>FIELD IMAGE RECORD</span>
+        <b>지상 활동 기록</b>
+      </div>
+      <em>FILE 01 / FULL BODY</em>
+    </div>
+
+    <div class="fullbody-stage">
+      <img src="../images/fullbody/ian.png" alt="이안 카터 전신 이미지">
+    </div>
+
+    <div class="visual-foot">
+      <span>SHELTER NO.435 · FIELD REFERENCE</span>
+      <a class="gallery-open" href="../gallery/ian.html">OPEN PHOTO ARCHIVE →</a>
+    </div>
+  </section>
+
   <section class="basic">
     <div><b>SPECIES</b><span>HUMAN</span></div>
     <div><b>AGE / SEX</b><span>24 / M</span></div>
@@ -256,7 +393,7 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
     <div><b>ASSIGNMENT</b><span>셸터 외부안전관리 · 경비</span></div>
   </section>
   <section class="grid">
-    <div class="label">성격 / PERSONA</div><div class="value">예민 · 시니컬 · 자존심 강함 · 경계 강함 · 은근히 정 많음</div>
+    <div class="label">성격 / PERSONA</div><div class="value">까칠 · 예민 · 자존심 강함 · 경계 강함 · 은근히 정 많음</div>
     <div class="label">내면 기록</div><div class="value observation-value"><div class="observation-note">자신의 판단과 능력을 성인으로 인정받는 일, 그리고 셸터에서의 삶이 가치 있다는 확신을 중요하게 여긴다. 약함이나 애착, 도움 요청을 통제권 상실과 연결하는 경향이 있어 필요 이상으로 혼자 처리하려 한다. 본인은 간섭받는 것을 싫어하지만, 걱정하는 대상의 안전 문제에서는 같은 기준을 타인에게 적용하지 않는 모순이 확인된다.</div></div>
 <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-observation"><div class="habit-main">출입 전후로 출입구와 환기구 상태를 확인한다.</div></div><div class="habit-observation"><div class="habit-main">이동 중 필터 잔량을 반복적으로 계산한다.</div></div><div class="habit-observation"><div class="habit-main">사용한 장비는 즉시 정리해 원위치한다.</div></div><div class="habit-observation"><div class="habit-main">걱정하는 대상의 장비를 말없이 점검한 뒤, 이상이 있으면 결함만 짧게 지적한다.</div></div></div>
   </section>

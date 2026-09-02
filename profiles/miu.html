@@ -233,6 +233,123 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   .habit-value{padding:3px 18px 12px}
 }
 
+
+/* v4: visual record */
+.visual-record{
+  margin:36px clamp(22px,5vw,56px);
+  padding:24px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(112,141,121,.025), transparent),
+    #fbfcfa;
+}
+.visual-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+.visual-head div span{
+  display:block;
+  color:var(--accent);
+  font:800 10px/1 monospace;
+  letter-spacing:.1em;
+}
+.visual-head div b{
+  display:block;
+  margin-top:7px;
+  font-size:17px;
+  letter-spacing:-.02em;
+}
+.visual-head em{
+  color:#9aa49e;
+  font:normal 700 8px/1 monospace;
+  letter-spacing:.08em;
+}
+.fullbody-stage{
+  min-height:640px;
+  padding:34px 20px 14px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(110,128,117,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110,128,117,.035) 1px, transparent 1px);
+  background-size:28px 28px;
+}
+.fullbody-stage img{
+  display:block;
+  width:auto;
+  max-width:min(560px, 92%);
+  max-height:780px;
+  object-fit:contain;
+  filter:drop-shadow(0 22px 24px rgba(40,55,45,.08));
+}
+.visual-foot{
+  padding-top:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.visual-foot span{
+  color:#929d96;
+  font:700 8px/1 monospace;
+  letter-spacing:.09em;
+}
+.gallery-open{
+  padding:12px 15px;
+  border:1px solid color-mix(in srgb,var(--accent) 32%, #d8e0da);
+  color:var(--accent);
+  background:#fff;
+  font:800 9px/1 monospace;
+  letter-spacing:.08em;
+  transition:transform .18s ease,background .18s ease;
+}
+.gallery-open:hover{
+  transform:translateY(-2px);
+  background:color-mix(in srgb,var(--accent) 5%, white);
+}
+.archive-page .visual-record{
+  border-color:rgba(197,163,101,.24);
+  background:#141814;
+}
+.archive-page .visual-head{
+  border-color:rgba(197,163,101,.15);
+}
+.archive-page .visual-head div span{
+  color:var(--amber);
+}
+.archive-page .visual-head div b{
+  color:#d8d4c9;
+}
+.archive-page .visual-head em{
+  color:#77756c;
+}
+.archive-page .fullbody-stage{
+  background:
+    repeating-linear-gradient(0deg,transparent 0,transparent 4px,rgba(197,163,101,.018) 5px),
+    #111512;
+}
+.archive-page .fullbody-stage img{
+  filter:drop-shadow(0 22px 28px rgba(0,0,0,.28));
+}
+.archive-page .gallery-open{
+  color:var(--amber);
+  border-color:rgba(197,163,101,.28);
+  background:#111512;
+}
+@media(max-width:700px){
+  .visual-record{margin:24px 14px;padding:15px}
+  .visual-head{align-items:flex-start;flex-direction:column}
+  .fullbody-stage{min-height:440px;padding:24px 5px 10px}
+  .fullbody-stage img{max-width:96%;max-height:620px}
+  .visual-foot{align-items:flex-start;flex-direction:column}
+}
+
 </style>
 </head>
 <body class="" style="--accent:#6f8c78">
@@ -249,6 +366,26 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
     <div class="code">🐈 / FELINE<br>26 / F / 169 CM<br>생활잡화·물류점 운영</div>
   </section>
   <section class="card-wrap"><img src="../images/cards/miu.png" alt="미우 프로필 카드"></section>
+  
+  <section class="visual-record">
+    <div class="visual-head">
+      <div>
+        <span>VISUAL RECORD / CURRENT</span>
+        <b>전신</b>
+      </div>
+      <em>FILE 01 / FULL BODY</em>
+    </div>
+
+    <div class="fullbody-stage">
+      <img src="../images/fullbody/miu.webp" alt="미우 전신 이미지">
+    </div>
+
+    <div class="visual-foot">
+      <span>CIVIC VISUAL REFERENCE · CURRENT FILE</span>
+      <a class="gallery-open" href="../gallery/miu.html">OPEN PHOTO ARCHIVE →</a>
+    </div>
+  </section>
+
   <section class="basic">
     <div><b>SPECIES</b><span>FELINE</span></div>
     <div><b>AGE / SEX</b><span>26 / F</span></div>
