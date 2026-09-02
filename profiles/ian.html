@@ -350,6 +350,63 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   .visual-foot{align-items:flex-start;flex-direction:column}
 }
 
+
+/* Ian transparent field-record panel */
+.archive-page .fullbody-stage{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      #747c72 0%,
+      #626b63 38%,
+      #465047 67%,
+      #252d27 100%
+    );
+  border:1px solid rgba(197,163,101,.20);
+  box-shadow:
+    inset 0 0 72px rgba(0,0,0,.24);
+}
+
+.archive-page .fullbody-stage::before{
+  content:"FIELD VISUAL SCAN / SURFACE EXPOSURE UNIT";
+  position:absolute;
+  z-index:1;
+  top:16px;
+  left:18px;
+  color:rgba(224,211,178,.28);
+  font:700 7px/1 monospace;
+  letter-spacing:.11em;
+  pointer-events:none;
+}
+
+.archive-page .fullbody-stage::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 5px,
+      rgba(255,255,255,.022) 6px
+    );
+}
+
+.archive-page .fullbody-stage img{
+  position:relative;
+  z-index:2;
+  background:transparent;
+  filter:
+    drop-shadow(1px 0 0 rgba(224,218,196,.11))
+    drop-shadow(-1px 0 0 rgba(224,218,196,.11))
+    drop-shadow(0 1px 0 rgba(224,218,196,.08))
+    drop-shadow(0 20px 28px rgba(0,0,0,.38));
+}
+
 </style>
 </head>
 <body class="archive-page" style="--accent:#c4a164">
@@ -377,7 +434,7 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
     </div>
 
     <div class="fullbody-stage">
-      <img src="../images/fullbody/ian.png" alt="이안 카터 전신 이미지">
+      <img src="../images/fullbody/ian_transparent.png" alt="이안 카터 전신 이미지">
     </div>
 
     <div class="visual-foot">
@@ -393,7 +450,7 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
     <div><b>ASSIGNMENT</b><span>셸터 외부안전관리 · 경비</span></div>
   </section>
   <section class="grid">
-    <div class="label">성격 / PERSONA</div><div class="value">까칠 · 예민 · 자존심 강함 · 경계 강함 · 은근히 정 많음</div>
+    <div class="label">성격 / PERSONA</div><div class="value">까칠 · 예민 · 시니컬 · 자존심 강함 · 경계 강함 · 은근히 정 많음</div>
     <div class="label">내면 기록</div><div class="value observation-value"><div class="observation-note">자신의 판단과 능력을 성인으로 인정받는 일, 그리고 셸터에서의 삶이 가치 있다는 확신을 중요하게 여긴다. 약함이나 애착, 도움 요청을 통제권 상실과 연결하는 경향이 있어 필요 이상으로 혼자 처리하려 한다. 본인은 간섭받는 것을 싫어하지만, 걱정하는 대상의 안전 문제에서는 같은 기준을 타인에게 적용하지 않는 모순이 확인된다.</div></div>
 <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-observation"><div class="habit-main">출입 전후로 출입구와 환기구 상태를 확인한다.</div></div><div class="habit-observation"><div class="habit-main">이동 중 필터 잔량을 반복적으로 계산한다.</div></div><div class="habit-observation"><div class="habit-main">사용한 장비는 즉시 정리해 원위치한다.</div></div><div class="habit-observation"><div class="habit-main">걱정하는 대상의 장비를 말없이 점검한 뒤, 이상이 있으면 결함만 짧게 지적한다.</div></div></div>
   </section>
