@@ -142,6 +142,97 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   .habit-value{padding:5px 18px 14px}
 }
 
+
+/* v3 observation-record UI */
+.observation-value{
+  padding:20px 26px;
+}
+.observation-note{
+  position:relative;
+  padding:18px 20px 18px 24px;
+  color:#5f6e64;
+  border-left:2px solid color-mix(in srgb, var(--accent) 52%, transparent);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 5%, transparent), transparent 58%);
+  font-size:13px;
+  line-height:1.92;
+}
+.observation-note::before{
+  content:"OBSERVATION";
+  display:block;
+  margin-bottom:9px;
+  color:#93a097;
+  font:700 8px/1 monospace;
+  letter-spacing:.12em;
+}
+
+.habit-value{
+  padding:7px 28px 12px;
+}
+.habit-observation{
+  padding:13px 4px 12px 28px;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  position:relative;
+}
+.habit-observation:last-child{
+  border-bottom:0;
+}
+.habit-observation::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:22px;
+  width:9px;
+  height:1px;
+  background:var(--accent);
+  opacity:.48;
+}
+.habit-main{
+  color:#59675e;
+  font-size:13px;
+  line-height:1.65;
+}
+.habit-aside{
+  margin-top:5px;
+  color:#9aa39d;
+  font-size:11px;
+  line-height:1.55;
+  font-style:italic;
+}
+.habit-aside::before{
+  content:"↳ ";
+  opacity:.7;
+}
+
+.archive-page .observation-note{
+  color:#a9afa9;
+  border-left-color:rgba(197,163,101,.34);
+  background:linear-gradient(90deg,rgba(197,163,101,.035),transparent 58%);
+}
+.archive-page .observation-note::before{
+  color:#837e72;
+  content:"ASSESSMENT";
+}
+.archive-page .habit-main{
+  color:#a7ada6;
+}
+.archive-page .habit-aside{
+  display:none;
+}
+.archive-page .habit-observation{
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-observation::before{
+  background:var(--amber);
+  opacity:.38;
+}
+
+@media(max-width:700px){
+  .observation-value{padding:10px 14px 16px}
+  .observation-note{padding:15px 16px 15px 19px}
+  .habit-value{padding:3px 18px 12px}
+}
+
 </style>
 </head>
 <body class="archive-page" style="--accent:#c4a164">
@@ -166,8 +257,8 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">까칠 · 예민 · 시니컬 · 자존심 강함 · 경계 강함 · 은근히 정 많음</div>
-    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">자신의 판단과 능력을 성인으로 인정받고, 셸터에서의 삶의 가치를 확인하고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">약함·애착·도움 요청을 통제 상실처럼 느끼는 경향.</div></div><div class="inner-row"><div class="inner-key">모순</div><div class="inner-text">간섭받기는 싫지만 걱정하는 상대에게는 안전을 이유로 간섭함.</div></div></div></div>
-    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">출입구 · 환기구 확인</div><div class="habit-line">필터 잔량 계산</div><div class="habit-line">장비 즉시 정리</div><div class="habit-line">걱정하는 상대의 장비를 말없이 점검한 뒤 결함만 지적</div></div></div>
+    <div class="label">내면 기록</div><div class="value observation-value"><div class="observation-note">자신의 판단과 능력을 성인으로 인정받는 일, 그리고 셸터에서의 삶이 가치 있다는 확신을 중요하게 여긴다. 약함이나 애착, 도움 요청을 통제권 상실과 연결하는 경향이 있어 필요 이상으로 혼자 처리하려 한다. 본인은 간섭받는 것을 싫어하지만, 걱정하는 대상의 안전 문제에서는 같은 기준을 타인에게 적용하지 않는 모순이 확인된다.</div></div>
+<div class="label">생활 습관</div><div class="value habit-value"><div class="habit-observation"><div class="habit-main">출입 전후로 출입구와 환기구 상태를 확인한다.</div></div><div class="habit-observation"><div class="habit-main">이동 중 필터 잔량을 반복적으로 계산한다.</div></div><div class="habit-observation"><div class="habit-main">사용한 장비는 즉시 정리해 원위치한다.</div></div><div class="habit-observation"><div class="habit-main">걱정하는 대상의 장비를 말없이 점검한 뒤, 이상이 있으면 결함만 짧게 지적한다.</div></div></div>
   </section>
   <details class="restricted">
     <summary>RESTRICTED / PRIVATE BIOLOGICAL RECORD — 클릭하여 열람</summary>

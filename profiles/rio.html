@@ -142,6 +142,97 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   .habit-value{padding:5px 18px 14px}
 }
 
+
+/* v3 observation-record UI */
+.observation-value{
+  padding:20px 26px;
+}
+.observation-note{
+  position:relative;
+  padding:18px 20px 18px 24px;
+  color:#5f6e64;
+  border-left:2px solid color-mix(in srgb, var(--accent) 52%, transparent);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 5%, transparent), transparent 58%);
+  font-size:13px;
+  line-height:1.92;
+}
+.observation-note::before{
+  content:"OBSERVATION";
+  display:block;
+  margin-bottom:9px;
+  color:#93a097;
+  font:700 8px/1 monospace;
+  letter-spacing:.12em;
+}
+
+.habit-value{
+  padding:7px 28px 12px;
+}
+.habit-observation{
+  padding:13px 4px 12px 28px;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  position:relative;
+}
+.habit-observation:last-child{
+  border-bottom:0;
+}
+.habit-observation::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:22px;
+  width:9px;
+  height:1px;
+  background:var(--accent);
+  opacity:.48;
+}
+.habit-main{
+  color:#59675e;
+  font-size:13px;
+  line-height:1.65;
+}
+.habit-aside{
+  margin-top:5px;
+  color:#9aa39d;
+  font-size:11px;
+  line-height:1.55;
+  font-style:italic;
+}
+.habit-aside::before{
+  content:"↳ ";
+  opacity:.7;
+}
+
+.archive-page .observation-note{
+  color:#a9afa9;
+  border-left-color:rgba(197,163,101,.34);
+  background:linear-gradient(90deg,rgba(197,163,101,.035),transparent 58%);
+}
+.archive-page .observation-note::before{
+  color:#837e72;
+  content:"ASSESSMENT";
+}
+.archive-page .habit-main{
+  color:#a7ada6;
+}
+.archive-page .habit-aside{
+  display:none;
+}
+.archive-page .habit-observation{
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-observation::before{
+  background:var(--amber);
+  opacity:.38;
+}
+
+@media(max-width:700px){
+  .observation-value{padding:10px 14px 16px}
+  .observation-note{padding:15px 16px 15px 19px}
+  .habit-value{padding:3px 18px 12px}
+}
+
 </style>
 </head>
 <body class="" style="--accent:#7b62c9">
@@ -166,8 +257,8 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">냉정 · 원칙주의 · 신중 · 의심 많음 · 책임감</div>
-    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">예외 상황까지 절차 안에서 안전하게 처리하고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">규칙 밖에서의 유연한 판단이 느림.</div></div></div></div>
-    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">메모마다 시각 기록</div><div class="habit-line">질문은 한 번에 하나</div><div class="habit-line">통화 후 즉시 정리</div><div class="habit-line">유행문화에 약함</div></div></div>
+    <div class="label">내면 기록</div><div class="value observation-value"><div class="observation-note">예외 상황까지 가능한 한 절차 안에서 안전하게 처리하는 것을 중요하게 여긴다. 기준이 명확한 상황에서는 흔들림이 적지만, 준비된 규칙이 없는 문제를 만나면 가능한 선택지를 지나치게 오래 검토하는 편이다.</div></div>
+<div class="label">생활 습관</div><div class="value habit-value"><div class="habit-observation"><div class="habit-main">메모를 남길 때 내용과 함께 시각을 빠뜨리지 않는다.</div><div class="habit-aside">나중에 보면 기록이라기보다 작은 사건일지에 가깝다.</div></div><div class="habit-observation"><div class="habit-main">질문은 한 번에 하나씩, 답을 확인한 뒤 다음 질문으로 넘어간다.</div><div class="habit-aside">한꺼번에 여러 가지를 말하면 다시 나눠서 묻는다.</div></div><div class="habit-observation"><div class="habit-main">통화를 끝낸 직후 내용을 정리해두는 습관이 있다.</div><div class="habit-aside">기억력 문제가 아니라 기록이 남아야 안심되는 쪽.</div></div><div class="habit-observation"><div class="habit-main">유행하는 문화나 밈에는 유난히 약하다.</div><div class="habit-aside">설명해주면 진지하게 듣는 것이 오히려 더 곤란하다.</div></div></div>
   </section>
 
   <section class="relation-record">

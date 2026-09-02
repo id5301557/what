@@ -142,6 +142,97 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   .habit-value{padding:5px 18px 14px}
 }
 
+
+/* v3 observation-record UI */
+.observation-value{
+  padding:20px 26px;
+}
+.observation-note{
+  position:relative;
+  padding:18px 20px 18px 24px;
+  color:#5f6e64;
+  border-left:2px solid color-mix(in srgb, var(--accent) 52%, transparent);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 5%, transparent), transparent 58%);
+  font-size:13px;
+  line-height:1.92;
+}
+.observation-note::before{
+  content:"OBSERVATION";
+  display:block;
+  margin-bottom:9px;
+  color:#93a097;
+  font:700 8px/1 monospace;
+  letter-spacing:.12em;
+}
+
+.habit-value{
+  padding:7px 28px 12px;
+}
+.habit-observation{
+  padding:13px 4px 12px 28px;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  position:relative;
+}
+.habit-observation:last-child{
+  border-bottom:0;
+}
+.habit-observation::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:22px;
+  width:9px;
+  height:1px;
+  background:var(--accent);
+  opacity:.48;
+}
+.habit-main{
+  color:#59675e;
+  font-size:13px;
+  line-height:1.65;
+}
+.habit-aside{
+  margin-top:5px;
+  color:#9aa39d;
+  font-size:11px;
+  line-height:1.55;
+  font-style:italic;
+}
+.habit-aside::before{
+  content:"↳ ";
+  opacity:.7;
+}
+
+.archive-page .observation-note{
+  color:#a9afa9;
+  border-left-color:rgba(197,163,101,.34);
+  background:linear-gradient(90deg,rgba(197,163,101,.035),transparent 58%);
+}
+.archive-page .observation-note::before{
+  color:#837e72;
+  content:"ASSESSMENT";
+}
+.archive-page .habit-main{
+  color:#a7ada6;
+}
+.archive-page .habit-aside{
+  display:none;
+}
+.archive-page .habit-observation{
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-observation::before{
+  background:var(--amber);
+  opacity:.38;
+}
+
+@media(max-width:700px){
+  .observation-value{padding:10px 14px 16px}
+  .observation-note{padding:15px 16px 15px 19px}
+  .habit-value{padding:3px 18px 12px}
+}
+
 </style>
 </head>
 <body class="" style="--accent:#c98746">
@@ -166,8 +257,8 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">붙임성 좋음 · 솔직 · 행동파 · 현실적 친절</div>
-    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">눈앞의 문제를 직접 해결하고, 실제로 도움이 되는 사람이 되고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">도움과 개입 사이의 경계가 흐려지기 쉬움.</div></div></div></div>
-    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">공구를 만지작거림</div><div class="habit-line">볼트/케이블타이 휴대</div><div class="habit-line">문자보다 전화 선호</div><div class="habit-line">무자각 스킨십이 잦음</div></div></div>
+    <div class="label">내면 기록</div><div class="value observation-value"><div class="observation-note">눈앞에 문제가 생기면 직접 손을 대 해결하려 하고, 자신이 실제로 도움이 되는 사람이라는 데서 만족을 얻는 편이다. 다만 상대가 도움을 필요로 하는지 확인하기 전에 먼저 움직이는 경우가 있어, 호의와 개입의 경계가 흐려질 때가 있다.</div></div>
+<div class="label">생활 습관</div><div class="value habit-value"><div class="habit-observation"><div class="habit-main">작은 공구들을 늘 들고 다니며, 손이 비면 하나쯤 만지작거리는 버릇이 있다.</div><div class="habit-aside">본인은 거의 의식하지 못하는 듯.</div></div><div class="habit-observation"><div class="habit-main">볼트와 케이블 타이는 사실상 상비품처럼 휴대한다.</div><div class="habit-aside">가방 안에서 안 나오는 날을 보기 어렵다.</div></div><div class="habit-observation"><div class="habit-main">긴 문자를 주고받기보다는 바로 전화를 거는 쪽을 선호한다.</div><div class="habit-aside">세 줄쯤 넘어갈 것 같으면 그냥 거는 편.</div></div><div class="habit-observation"><div class="habit-main">친해질수록 어깨를 툭 치거나 등을 밀어주는 식의 무자각 접촉이 잦아진다.</div><div class="habit-aside">지적하면 잠깐 조심하지만 오래가지는 않는다.</div></div></div>
   </section>
 
   <section class="relation-record">

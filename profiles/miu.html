@@ -142,6 +142,97 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   .habit-value{padding:5px 18px 14px}
 }
 
+
+/* v3 observation-record UI */
+.observation-value{
+  padding:20px 26px;
+}
+.observation-note{
+  position:relative;
+  padding:18px 20px 18px 24px;
+  color:#5f6e64;
+  border-left:2px solid color-mix(in srgb, var(--accent) 52%, transparent);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 5%, transparent), transparent 58%);
+  font-size:13px;
+  line-height:1.92;
+}
+.observation-note::before{
+  content:"OBSERVATION";
+  display:block;
+  margin-bottom:9px;
+  color:#93a097;
+  font:700 8px/1 monospace;
+  letter-spacing:.12em;
+}
+
+.habit-value{
+  padding:7px 28px 12px;
+}
+.habit-observation{
+  padding:13px 4px 12px 28px;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  position:relative;
+}
+.habit-observation:last-child{
+  border-bottom:0;
+}
+.habit-observation::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:22px;
+  width:9px;
+  height:1px;
+  background:var(--accent);
+  opacity:.48;
+}
+.habit-main{
+  color:#59675e;
+  font-size:13px;
+  line-height:1.65;
+}
+.habit-aside{
+  margin-top:5px;
+  color:#9aa39d;
+  font-size:11px;
+  line-height:1.55;
+  font-style:italic;
+}
+.habit-aside::before{
+  content:"↳ ";
+  opacity:.7;
+}
+
+.archive-page .observation-note{
+  color:#a9afa9;
+  border-left-color:rgba(197,163,101,.34);
+  background:linear-gradient(90deg,rgba(197,163,101,.035),transparent 58%);
+}
+.archive-page .observation-note::before{
+  color:#837e72;
+  content:"ASSESSMENT";
+}
+.archive-page .habit-main{
+  color:#a7ada6;
+}
+.archive-page .habit-aside{
+  display:none;
+}
+.archive-page .habit-observation{
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-observation::before{
+  background:var(--amber);
+  opacity:.38;
+}
+
+@media(max-width:700px){
+  .observation-value{padding:10px 14px 16px}
+  .observation-note{padding:15px 16px 15px 19px}
+  .habit-value{padding:3px 18px 12px}
+}
+
 </style>
 </head>
 <body class="" style="--accent:#6f8c78">
@@ -166,8 +257,8 @@ a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;heigh
   </section>
   <section class="grid">
     <div class="label">성격 / PERSONA</div><div class="value">눈치 빠름 · 경계 강함 · 현실적 · 책임감 · 말이 날카로움</div>
-    <div class="label">내면 기록</div><div class="value inner-value"><div class="inner-table"><div class="inner-row"><div class="inner-key">욕구</div><div class="inner-text">생활과 자신의 책임 범위를 안정적으로 유지하고 싶어함.</div></div><div class="inner-row"><div class="inner-key">결핍</div><div class="inner-text">불확실할수록 최악의 경우부터 가정하는 경향.</div></div></div></div>
-    <div class="label">생활 습관</div><div class="value habit-value"><div class="habit-list"><div class="habit-line">핵심부터 질문</div><div class="habit-line">영수증/배송기록 보관</div><div class="habit-line">배터리 40% 이하를 싫어함</div></div></div>
+    <div class="label">내면 기록</div><div class="value observation-value"><div class="observation-note">자기 생활과 맡은 일의 범위를 안정적으로 유지하려는 성향이 강하다. 예측 가능한 문제에는 침착하지만 정보가 부족해질수록 가장 나쁜 경우부터 계산해두는 편이라, 실제 상황보다 한발 먼저 경계 수위를 올릴 때가 있다.</div></div>
+<div class="label">생활 습관</div><div class="value habit-value"><div class="habit-observation"><div class="habit-main">대화가 길어지기 전에 필요한 핵심부터 묻는 편이다.</div><div class="habit-aside">돌려 말하면 다시 처음부터 물어볼 가능성이 높다.</div></div><div class="habit-observation"><div class="habit-main">영수증과 배송 기록을 꼼꼼하게 보관한다.</div><div class="habit-aside">찾아달라고 하면 놀랄 만큼 빨리 꺼낸다.</div></div><div class="habit-observation"><div class="habit-main">휴대기기 배터리가 40% 아래로 내려가는 것을 유난히 신경 쓴다.</div><div class="habit-aside">본인은 그냥 &#x27;미리 충전하는 것&#x27;이라고 주장한다.</div></div></div>
   </section>
 
   <section class="relation-record">
