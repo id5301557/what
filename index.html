@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Characters</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #202225;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* 전체 무대 */
+.stage {
+  position: relative;
+
+  width: min(100vw, 1600px);
+  aspect-ratio: 6650 / 3380;
+
+  overflow: hidden;
+  background: #dfecef;
+}
+
+/* 모든 이미지 동일 위치 */
+.stage img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+}
+
+/* =========================
+   배경
+   ========================= */
+
+.bg {
+  z-index: 1;
+  opacity: 0;
+}
+
+/* 전체 루프 = 21초 */
+
+.university {
+  animation: university 21s infinite;
+}
+
+.shop {
+  animation: shop 21s infinite;
+}
+
+.school {
+  animation: school 21s infinite;
+}
+
+.shelter {
+  animation: shelter 21s infinite;
+}
+
+.public {
+  animation: public 21s infinite;
+}
+
+.maintenance {
+  animation: maintenance 21s infinite;
+}
+
+.hospital {
+  animation: hospital 21s infinite;
+}
+
+/* 대학가 */
+@keyframes university {
+  0%      { opacity: 1; }
+  12.5%   { opacity: 1; }
+  14.3%   { opacity: 0; }
+
+  98.5%   { opacity: 0; }
+  100%    { opacity: 1; }
+}
+
+/* 잡화점 */
+@keyframes shop {
+  0%      { opacity: 0; }
+  12.5%   { opacity: 0; }
+  14.3%   { opacity: 1; }
+  26.8%   { opacity: 1; }
+  28.6%   { opacity: 0; }
+  100%    { opacity: 0; }
+}
+
+/* 학교 */
+@keyframes school {
+  0%      { opacity: 0; }
+  26.8%   { opacity: 0; }
+  28.6%   { opacity: 1; }
+  41.0%   { opacity: 1; }
+  42.9%   { opacity: 0; }
+  100%    { opacity: 0; }
+}
+
+/* 셸터 */
+@keyframes shelter {
+  0%      { opacity: 0; }
+  42.2%   { opacity: 0; }
+  43.5%   { opacity: 1; }
+  56.5%   { opacity: 1; }
+  57.8%   { opacity: 0; }
+  100%    { opacity: 0; }
+}
+
+/* 공공기관 */
+@keyframes public {
+  0%      { opacity: 0; }
+  57.1%   { opacity: 0; }
+  58.5%   { opacity: 1; }
+  69.6%   { opacity: 1; }
+  71.4%   { opacity: 0; }
+  100%    { opacity: 0; }
+}
+
+/* 정비소 */
+@keyframes maintenance {
+  0%      { opacity: 0; }
+  69.6%   { opacity: 0; }
+  71.4%   { opacity: 1; }
+  83.9%   { opacity: 1; }
+  85.7%   { opacity: 0; }
+  100%    { opacity: 0; }
+}
+
+/* 병원 */
+@keyframes hospital {
+  0%      { opacity: 0; }
+  83.9%   { opacity: 0; }
+  85.7%   { opacity: 1; }
+  98.5%   { opacity: 1; }
+  100%    { opacity: 0; }
+}
+
+
+/* =========================
+   캐릭터
+   ========================= */
+
+.characters {
+  z-index: 10;
+  animation: characters 21s infinite;
+}
+
+.ian {
+  z-index: 11;
+  opacity: 0;
+  animation: ian 21s infinite;
+}
+
+/*
+학교 → 암전 → 셸터:
+7명 사라짐
+
+셸터:
+이안만 등장
+
+셸터 → 암전 → 공공기관:
+다시 7명 등장
+*/
+
+@keyframes characters {
+  0%      { opacity: 1; }
+
+  41.0%   { opacity: 1; }
+  42.2%   { opacity: 0; }
+
+  57.8%   { opacity: 0; }
+  59.0%   { opacity: 1; }
+
+  100%    { opacity: 1; }
+}
+
+@keyframes ian {
+  0%      { opacity: 0; }
+
+  42.2%   { opacity: 0; }
+  43.5%   { opacity: 1; }
+
+  56.5%   { opacity: 1; }
+  57.8%   { opacity: 0; }
+
+  100%    { opacity: 0; }
+}
+
+
+/* =========================
+   암전
+   ========================= */
+
+.blackout {
+  position: absolute;
+  inset: 0;
+
+  z-index: 20;
+
+  background: #08090b;
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation: blackout 21s infinite;
+}
+
+/*
+약 0.25초 정도만 완전히 어두워짐
+*/
+
+@keyframes blackout {
+  0%      { opacity: 0; }
+
+  /* 학교 → 셸터 */
+  41.0%   { opacity: 0; }
+  42.2%   { opacity: 1; }
+  43.5%   { opacity: 0; }
+
+  /* 셸터 → 공공기관 */
+  56.5%   { opacity: 0; }
+  57.8%   { opacity: 1; }
+  59.0%   { opacity: 0; }
+
+  100%    { opacity: 0; }
+}
+
+
+/* 작은 화면에서도 비율 유지 */
+@media (max-width: 700px) {
+  .stage {
+    width: 100vw;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="stage">
+
+  <!-- 배경 -->
+  <img class="bg university"
+       src="./images/university.png"
+       alt="">
+
+  <img class="bg shop"
+       src="./images/shop.png"
+       alt="">
+
+  <img class="bg school"
+       src="./images/school.png"
+       alt="">
+
+  <img class="bg shelter"
+       src="./images/shelter.png"
+       alt="">
+
+  <img class="bg public"
+       src="./images/public.png"
+       alt="">
+
+  <img class="bg maintenance"
+       src="./images/maintenance.png"
+       alt="">
+
+  <img class="bg hospital"
+       src="./images/hospital.png"
+       alt="">
+
+
+  <!-- 평소 7명 -->
+  <img class="characters"
+       src="./images/characters.png"
+       alt="Characters">
+
+
+  <!-- 셸터에서만 등장하는 이안 -->
+  <img class="ian"
+       src="./images/ian.png"
+       alt="Ian">
+
+
+  <!-- 암전 -->
+  <div class="blackout"></div>
+
+</div>
+
+</body>
+</html>
