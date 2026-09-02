@@ -1,314 +1,195 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Characters</title>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-  background: #202225;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-/* 전체 무대 */
-.stage {
-  position: relative;
-
-  width: min(100vw, 1600px);
-  aspect-ratio: 6650 / 3380;
-
-  overflow: hidden;
-  background: #dfecef;
-}
-
-/* 모든 이미지 동일 위치 */
-.stage img {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  display: block;
-}
-
-/* =========================
-   배경
-   ========================= */
-
-.bg {
-  z-index: 1;
-  opacity: 0;
-}
-
-/* 전체 루프 = 21초 */
-
-.university {
-  animation: university 21s infinite;
-}
-
-.shop {
-  animation: shop 21s infinite;
-}
-
-.school {
-  animation: school 21s infinite;
-}
-
-.shelter {
-  animation: shelter 21s infinite;
-}
-
-.public {
-  animation: public 21s infinite;
-}
-
-.maintenance {
-  animation: maintenance 21s infinite;
-}
-
-.hospital {
-  animation: hospital 21s infinite;
-}
-
-/* 대학가 */
-@keyframes university {
-  0%      { opacity: 1; }
-  12.5%   { opacity: 1; }
-  14.3%   { opacity: 0; }
-
-  98.5%   { opacity: 0; }
-  100%    { opacity: 1; }
-}
-
-/* 잡화점 */
-@keyframes shop {
-  0%      { opacity: 0; }
-  12.5%   { opacity: 0; }
-  14.3%   { opacity: 1; }
-  26.8%   { opacity: 1; }
-  28.6%   { opacity: 0; }
-  100%    { opacity: 0; }
-}
-
-/* 학교 */
-@keyframes school {
-  0%      { opacity: 0; }
-  26.8%   { opacity: 0; }
-  28.6%   { opacity: 1; }
-  41.0%   { opacity: 1; }
-  42.9%   { opacity: 0; }
-  100%    { opacity: 0; }
-}
-
-/* 셸터 */
-@keyframes shelter {
-  0%      { opacity: 0; }
-  42.2%   { opacity: 0; }
-  43.5%   { opacity: 1; }
-  56.5%   { opacity: 1; }
-  57.8%   { opacity: 0; }
-  100%    { opacity: 0; }
-}
-
-/* 공공기관 */
-@keyframes public {
-  0%      { opacity: 0; }
-  57.1%   { opacity: 0; }
-  58.5%   { opacity: 1; }
-  69.6%   { opacity: 1; }
-  71.4%   { opacity: 0; }
-  100%    { opacity: 0; }
-}
-
-/* 정비소 */
-@keyframes maintenance {
-  0%      { opacity: 0; }
-  69.6%   { opacity: 0; }
-  71.4%   { opacity: 1; }
-  83.9%   { opacity: 1; }
-  85.7%   { opacity: 0; }
-  100%    { opacity: 0; }
-}
-
-/* 병원 */
-@keyframes hospital {
-  0%      { opacity: 0; }
-  83.9%   { opacity: 0; }
-  85.7%   { opacity: 1; }
-  98.5%   { opacity: 1; }
-  100%    { opacity: 0; }
-}
-
-
-/* =========================
-   캐릭터
-   ========================= */
-
-.characters {
-  z-index: 10;
-  animation: characters 21s infinite;
-}
-
-.ian {
-  z-index: 11;
-  opacity: 0;
-  animation: ian 21s infinite;
-}
-
-/*
-학교 → 암전 → 셸터:
-7명 사라짐
-
-셸터:
-이안만 등장
-
-셸터 → 암전 → 공공기관:
-다시 7명 등장
-*/
-
-@keyframes characters {
-  0%      { opacity: 1; }
-
-  41.0%   { opacity: 1; }
-  42.2%   { opacity: 0; }
-
-  57.8%   { opacity: 0; }
-  59.0%   { opacity: 1; }
-
-  100%    { opacity: 1; }
-}
-
-@keyframes ian {
-  0%      { opacity: 0; }
-
-  42.2%   { opacity: 0; }
-  43.5%   { opacity: 1; }
-
-  56.5%   { opacity: 1; }
-  57.8%   { opacity: 0; }
-
-  100%    { opacity: 0; }
-}
-
-
-/* =========================
-   암전
-   ========================= */
-
-.blackout {
-  position: absolute;
-  inset: 0;
-
-  z-index: 20;
-
-  background: #08090b;
-  opacity: 0;
-
-  pointer-events: none;
-
-  animation: blackout 21s infinite;
-}
-
-/*
-약 0.25초 정도만 완전히 어두워짐
-*/
-
-@keyframes blackout {
-  0%      { opacity: 0; }
-
-  /* 학교 → 셸터 */
-  41.0%   { opacity: 0; }
-  42.2%   { opacity: 1; }
-  43.5%   { opacity: 0; }
-
-  /* 셸터 → 공공기관 */
-  56.5%   { opacity: 0; }
-  57.8%   { opacity: 1; }
-  59.0%   { opacity: 0; }
-
-  100%    { opacity: 0; }
-}
-
-
-/* 작은 화면에서도 비율 유지 */
-@media (max-width: 700px) {
-  .stage {
-    width: 100vw;
-  }
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eef4ef">
+  <title>CIVIC NETWORK / 2486</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
-
 <body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="처음으로">
+      <span class="brand-mark">CIVIC</span>
+      <span class="brand-sub">NETWORK / 2486</span>
+    </a>
 
-<div class="stage">
+    <nav class="nav" aria-label="메인 메뉴">
+      <a href="#world">WORLD</a>
+      <a href="#citizens">CITIZENS</a>
+      <a href="#archive">ARCHIVE</a>
+    </nav>
+  </header>
 
-  <!-- 배경 -->
-  <img class="bg university"
-       src="./images/university.png"
-       alt="">
+  <main id="top">
+    <section class="hero">
+      <div class="hero-frame">
+        <img
+          class="hero-moving"
+          src="./images/moving.png"
+          alt="도시를 걷는 일곱 인물"
+          fetchpriority="high"
+        >
+        <div class="hero-noise" aria-hidden="true"></div>
+      </div>
 
-  <img class="bg shop"
-       src="./images/shop.png"
-       alt="">
+      <div class="hero-copy">
+        <div class="eyebrow">CITY CIVIL REGISTRY · PUBLIC ACCESS</div>
+        <h1>
+          <span>THE CITY IS</span>
+          <strong>ORDINARY.</strong>
+        </h1>
+        <p>
+          평범한 일상과 익숙한 도시. 서로 다른 종의 흔적을 지닌 사람들이
+          같은 이름 아래 살아간다. 기록상, 이곳에는 특별한 비밀이 없다.
+        </p>
+        <div class="hero-meta">
+          <span>STATUS / ONLINE</span>
+          <span>LOCAL YEAR / 2486</span>
+          <span>ACCESS / CIVIL</span>
+        </div>
+      </div>
+    </section>
 
-  <img class="bg school"
-       src="./images/school.png"
-       alt="">
+    <section class="world section" id="world">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">01</span>
+          <h2>WORLD / CITY LIFE</h2>
+        </div>
+        <p>현대와 크게 다르지 않은 도시의 평범한 생활 기록.</p>
+      </div>
 
-  <img class="bg shelter"
-       src="./images/shelter.png"
-       alt="">
+      <div class="world-grid">
+        <article>
+          <span class="mini-label">CIVIL LIFE</span>
+          <h3>일상은 계속된다.</h3>
+          <p>
+            학교, 병원, 생활물류점, 공공기관과 도시 설비.
+            각자는 자신의 직업과 생활권 안에서 독립적인 하루를 보낸다.
+          </p>
+        </article>
 
-  <img class="bg public"
-       src="./images/public.png"
-       alt="">
+        <article>
+          <span class="mini-label">SPECIES</span>
+          <h3>다른 형질, 같은 사회.</h3>
+          <p>
+            조상종의 외형과 감각이 다양하게 남아 있지만,
+            그것이 한 사람의 성격이나 삶을 결정하지는 않는다.
+          </p>
+        </article>
 
-  <img class="bg maintenance"
-       src="./images/maintenance.png"
-       alt="">
+        <article>
+          <span class="mini-label">ARCHIVE</span>
+          <h3>모든 기록이 공개되지는 않는다.</h3>
+          <p>
+            도시의 시민 등록망 바깥에도 오래된 기록이 남아 있다.
+            일부 항목은 일반 시민 체계와 호환되지 않는다.
+          </p>
+        </article>
+      </div>
+    </section>
 
-  <img class="bg hospital"
-       src="./images/hospital.png"
-       alt="">
+    <section class="citizens section" id="citizens">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">02</span>
+          <h2>CIVIC PROFILES</h2>
+        </div>
+        <p>카드를 누르면 원본 크기로 확인할 수 있음.</p>
+      </div>
 
+      <div class="card-grid">
+        <button class="profile-card miu" data-card="./images/cards/miu.png" data-name="MIU">
+          <img src="./images/cards/miu.png" alt="미우 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>MIU</b><em>FELINE · 26</em>
+          </span>
+        </button>
 
-  <!-- 평소 7명 -->
-  <img class="characters"
-       src="./images/characters.png"
-       alt="Characters">
+        <button class="profile-card mary" data-card="./images/cards/mary.png" data-name="MARY">
+          <img src="./images/cards/mary.png" alt="메리 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>MARY</b><em>CERVID · 30</em>
+          </span>
+        </button>
 
+        <button class="profile-card lulu" data-card="./images/cards/lulu.png" data-name="LULU">
+          <img src="./images/cards/lulu.png" alt="루루 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>LULU</b><em>LEPORID · 21</em>
+          </span>
+        </button>
 
-  <!-- 셸터에서만 등장하는 이안 -->
-  <img class="ian"
-       src="./images/ian.png"
-       alt="Ian">
+        <button class="profile-card rio" data-card="./images/cards/rio.png" data-name="RIO">
+          <img src="./images/cards/rio.png" alt="리오 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>RIO</b><em>SERPENT · 35</em>
+          </span>
+        </button>
 
+        <button class="profile-card popo" data-card="./images/cards/popo.png" data-name="POPO">
+          <img src="./images/cards/popo.png" alt="포포 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>POPO</b><em>CANINE · 27</em>
+          </span>
+        </button>
 
-  <!-- 암전 -->
-  <div class="blackout"></div>
+        <button class="profile-card nero" data-card="./images/cards/nero.png" data-name="NERO">
+          <img src="./images/cards/nero.png" alt="네로 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>NERO</b><em>SELACHIAN · 33</em>
+          </span>
+        </button>
+      </div>
+    </section>
 
-</div>
+    <section class="archive" id="archive">
+      <div class="archive-scanlines" aria-hidden="true"></div>
 
+      <div class="archive-inner">
+        <div class="archive-heading">
+          <span class="archive-index">03 / RESTRICTED</span>
+          <h2>SHELTER ARCHIVE</h2>
+          <p>
+            CIVIC NETWORK와 일치하지 않는 구형 인사 기록.
+            열람 권한 및 지상 노출 관련 항목이 별도 관리되고 있다.
+          </p>
+        </div>
+
+        <button
+          class="ian-card"
+          data-card="./images/cards/ian.png"
+          data-name="IAN CARTER"
+        >
+          <img src="./images/cards/ian.png" alt="이안 카터 셸터 인사 기록" loading="lazy">
+          <span class="ian-status">
+            <i></i>
+            ARCHIVE COPY / PERSONNEL RECORD
+          </span>
+        </button>
+
+        <div class="archive-footer">
+          <span>SHELTER NO.435</span>
+          <span>FIELD CLEARANCE REQUIRED</span>
+          <span>RECORD STATUS / ACTIVE</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>CITY NETWORK · CIVIL REGISTRY</span>
+    <span>ARCHIVE INTERFACE / 2486</span>
+  </footer>
+
+  <dialog class="modal" id="cardModal">
+    <button class="modal-close" type="button" aria-label="닫기">×</button>
+    <div class="modal-label" id="modalLabel">PROFILE</div>
+    <img id="modalImage" src="" alt="">
+  </dialog>
+
+  <script src="./script.js"></script>
 </body>
 </html>
