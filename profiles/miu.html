@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIU / Personal Record</title>
+<style>
+:root{--accent:#708d79;--paper:#f6f8f5;--ink:#243129;--muted:#738077;--line:#d8e0da;--dark:#151a17;--amber:#c5a365}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef3ef;color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;word-break:keep-all}
+a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;height:64px;padding:0 clamp(18px,4vw,64px);display:flex;align-items:center;justify-content:space-between;background:rgba(246,248,245,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.back{font:700 10px/1 monospace;letter-spacing:.1em;color:var(--muted)}.mark{font:800 12px/1 monospace;letter-spacing:.12em;color:var(--accent)}
+.record{width:min(1180px,calc(100% - 28px));margin:42px auto 90px;background:#fff;border:1px solid var(--line);box-shadow:0 30px 80px rgba(40,58,46,.09)}
+.record-head{padding:34px clamp(22px,5vw,56px);display:grid;grid-template-columns:1fr auto;gap:24px;border-bottom:3px solid var(--accent);background:linear-gradient(90deg,rgba(112,141,121,.08),transparent)}
+.kicker{font:700 10px/1 monospace;letter-spacing:.11em;color:var(--accent)}h1{margin:12px 0 6px;font-size:clamp(40px,7vw,88px);line-height:.9;letter-spacing:-.06em}h1 span{display:block;margin-top:12px;font:900 clamp(22px,3vw,40px)/1 "Arial Narrow",Arial,sans-serif;color:var(--accent);letter-spacing:-.02em}
+.code{align-self:end;text-align:right;color:#8a958e;font:600 10px/1.7 monospace}
+.card-wrap{padding:28px clamp(22px,5vw,56px);border-bottom:1px solid var(--line);background:#fafcf9}.card-wrap img{display:block;width:100%;border:1px solid rgba(112,141,121,.16)}
+.grid{display:grid;grid-template-columns:210px 1fr}.label{padding:22px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#f4f7f4;color:#77847c;font:700 10px/1.4 monospace;letter-spacing:.08em}.value{padding:21px 28px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.85;white-space:pre-line}
+.basic{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.basic div{padding:18px 22px;border-right:1px solid var(--line)}.basic div:last-child{border-right:0}.basic b{display:block;margin-bottom:8px;color:#89958e;font:700 9px/1 monospace;letter-spacing:.08em}.basic span{font-weight:800}
+.restricted{margin:36px clamp(22px,5vw,56px) 50px;border:1px solid #cfc7b7;background:#191d1a;color:#ddd8ca}.restricted summary{position:relative;list-style:none;cursor:pointer;padding:22px 56px 22px 24px;color:var(--amber);font:800 11px/1.4 monospace;letter-spacing:.1em}.restricted summary::-webkit-details-marker{display:none}.restricted summary::after{content:"OPEN";position:absolute;right:22px;top:22px;color:#91846c;font-size:9px}.restricted[open] summary::after{content:"CLOSE"}.restricted .inside{padding:0 24px 26px;border-top:1px solid rgba(197,163,101,.22)}.restricted .rrow{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.07)}.restricted .rrow:last-child{border-bottom:0}.restricted .rrow b{color:#aa9b7f;font:700 9px/1.5 monospace;letter-spacing:.08em}.restricted .rrow span{font-size:13px;line-height:1.75;color:#d4d6d1}
+.footer{padding:24px clamp(22px,5vw,56px);display:flex;justify-content:space-between;gap:20px;color:#8b968f;background:#f4f7f4;font:600 9px/1 monospace;letter-spacing:.08em}
+.archive-page{background:#101411;color:#e5e1d6}.archive-page .top{background:rgba(16,20,17,.9);border-color:rgba(197,163,101,.2)}.archive-page .back{color:#9d927e}.archive-page .record{background:#171c18;border-color:rgba(197,163,101,.35);box-shadow:0 30px 80px rgba(0,0,0,.28)}.archive-page .record-head{border-bottom-color:var(--amber);background:linear-gradient(90deg,rgba(197,163,101,.10),transparent)}.archive-page .kicker,.archive-page h1 span,.archive-page .mark{color:var(--amber)}.archive-page .code{color:#807a6e}.archive-page .card-wrap{background:#131713;border-color:rgba(197,163,101,.18)}.archive-page .card-wrap img{border-color:rgba(197,163,101,.25)}.archive-page .basic,.archive-page .label,.archive-page .value{border-color:rgba(197,163,101,.15)}.archive-page .label{background:#141814;color:#918b7d}.archive-page .value{background:#181d19}.archive-page .basic div{border-color:rgba(197,163,101,.15)}.archive-page .basic b{color:#8d8678}.archive-page .footer{background:#131713;color:#7f786d}.archive-page .restricted{background:#0e110f}
+@media(max-width:700px){.record{margin-top:18px}.record-head{grid-template-columns:1fr}.code{text-align:left}.basic{grid-template-columns:1fr 1fr}.basic div:nth-child(2){border-right:0}.grid{grid-template-columns:1fr}.label{border-right:0;padding-bottom:8px}.value{padding-top:8px}.restricted .rrow{grid-template-columns:1fr;gap:8px}.footer{flex-direction:column}}
+
+.relation-record{margin:36px clamp(22px,5vw,56px) 0;border:1px solid var(--line);background:#fafcf9}
+.relation-head{padding:16px 20px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);background:#f2f6f2}
+.relation-head span{color:var(--accent);font:800 10px/1 monospace;letter-spacing:.1em}
+.relation-head b{color:#66746b;font-size:12px}
+.relation-row{display:grid;grid-template-columns:180px 1fr;gap:22px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.relation-row:last-child{border-bottom:0}
+.relation-row b{font-size:13px}
+.relation-row span{color:#68766d;font-size:13px;line-height:1.75}
+.archive-page .relation-record{background:#151a17;border-color:rgba(197,163,101,.24)}
+.archive-page .relation-head{background:#121612;border-color:rgba(197,163,101,.18)}
+.archive-page .relation-head span{color:var(--amber)}
+.archive-page .relation-head b{color:#9b927f}
+.archive-page .relation-row{border-color:rgba(197,163,101,.13)}
+.archive-page .relation-row span{color:#aaa99f}
+@media(max-width:700px){.relation-row{grid-template-columns:1fr;gap:7px}}
+
+</style>
+</head>
+<body class="" style="--accent:#6f8c78">
+<header class="top">
+  <a class="back" href="../index.html#citizens">← BACK TO REGISTRY</a>
+  <span class="mark">CIVIC PERSONAL RECORD / 2486</span>
+</header>
+<main class="record">
+  <section class="record-head">
+    <div>
+      <div class="kicker">PERSONAL ACTIVITY & OBSERVATION RECORD</div>
+      <h1>미우<span>MIU</span></h1>
+    </div>
+    <div class="code">🐈 / FELINE<br>26 / F / 169 CM<br>생활잡화·물류점 운영</div>
+  </section>
+  <section class="card-wrap"><img src="../images/cards/miu.png" alt="미우 프로필 카드"></section>
+  <section class="basic">
+    <div><b>SPECIES</b><span>FELINE</span></div>
+    <div><b>AGE / SEX</b><span>26 / F</span></div>
+    <div><b>HEIGHT</b><span>169 CM</span></div>
+    <div><b>ASSIGNMENT</b><span>생활잡화·물류점 운영</span></div>
+  </section>
+  <section class="grid">
+    <div class="label">성격 / PERSONA</div><div class="value">눈치 빠름 · 경계 강함 · 현실적 · 책임감 · 말이 날카로움</div>
+    <div class="label">내면 기록</div><div class="value">욕구: 생활과 자신의 책임 범위를 안정적으로 유지하고 싶어함.
+결핍: 불확실할수록 최악의 경우부터 가정하는 경향.</div>
+    <div class="label">외형 / APPEARANCE</div><div class="value">169cm · 늘씬한 잔근육 · 검은 레이어드 중단발 · 올리브그린의 날카로운 눈 · 검은 고양이귀+긴 꼬리 · 차콜 재킷과 실용적인 도시복</div>
+    <div class="label">생활 습관</div><div class="value">핵심부터 질문 · 영수증/배송기록 보관 · 배터리 40% 이하를 싫어함</div>
+  </section>
+
+  <section class="relation-record">
+    <div class="relation-head">
+      <span>RELATION RECORD</span>
+      <b>기존 관계</b>
+    </div>
+      <div class="relation-row">
+        <b>🐕 포포</b>
+        <span>오래된 생활권 업무지인 · 티격거리지만 서로의 능력을 인정</span>
+      </div>
+      <div class="relation-row">
+        <b>🦌 메리</b>
+        <span>동네 지인</span>
+      </div>
+      <div class="relation-row">
+        <b>🐇 루루</b>
+        <span>생활물류점 단골 관계</span>
+      </div>
+  </section>
+
+  <details class="restricted">
+    <summary>RESTRICTED / PRIVATE BIOLOGICAL RECORD — 클릭하여 열람</summary>
+    <div class="inside">
+      <div class="rrow"><b>신체</b><span>고양잇과 약~중간 발현 · 외부 인간형 · 촉각 민감 + 유도배란계의 약한 호르몬 흔적</span></div><div class="rrow"><b>리비도</b><span>중간</span></div><div class="rrow"><b>포지션</b><span>스위치 · 자기 페이스 중시</span></div><div class="rrow"><b>취향</b><span>밀착 · 감각 자극 · 밀고 당기기 · 도발 주고받기</span></div><div class="rrow"><b>특징</b><span>동정 · 먼저 약올리지만 상대가 예상 밖으로 맞받아치면 쉽게 흐트러짐</span></div>
+    </div>
+  </details>
+  <footer class="footer"><span>CITY NETWORK · CIVIL REGISTRY</span><span>PERSONAL RECORD / MIU</span></footer>
+</main>
+</body></html>

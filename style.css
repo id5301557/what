@@ -641,3 +641,23 @@ img {
     display: none;
   }
 }
+
+.world-detail-link{
+  margin:0 0 22px;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.66);
+  color:#738179;
+  text-decoration:none;
+  font:700 10px/1 monospace;
+  letter-spacing:.09em;
+  transition:transform .2s ease,background .2s ease;
+}
+.world-detail-link b{color:var(--green);font-size:10px}
+.world-detail-link:hover{transform:translateY(-2px);background:#fff}
+.profile-card{display:block;text-decoration:none;color:inherit}
+.ian-card{display:block;text-decoration:none;color:inherit}
