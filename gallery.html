@@ -29,6 +29,46 @@ h1{margin:16px 0 18px;font:900 clamp(52px,9vw,118px)/.85 "Arial Narrow",Arial,sa
 .folder.ian .folder-info span,.folder.ian .folder-info em{color:#8d877a}.folder.ian .folder-info b{color:#cbae70}
 .footer{padding:28px 0;display:flex;justify-content:space-between;gap:20px;color:#89958e;font:700 9px/1 monospace;letter-spacing:.08em}
 @media(max-width:760px){.folder-grid{grid-template-columns:1fr}.folder.ian{grid-column:auto}.thumb,.folder.ian .thumb{height:300px}.footer{flex-direction:column}}
+
+/* v5 / portrait folder covers */
+.folder .thumb{
+  position:relative;
+  align-items:flex-end;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(255,255,255,.82) 0 16%, rgba(255,255,255,.26) 46%, transparent 72%),
+    var(--portrait-bg,#eef3ee);
+}
+.folder .thumb::after{
+  content:"ID PORTRAIT / CIVIC REGISTRY";
+  position:absolute;
+  left:13px;
+  top:12px;
+  color:rgba(60,77,66,.42);
+  font:700 7px/1 monospace;
+  letter-spacing:.1em;
+}
+.folder .thumb img{
+  height:96%;
+  width:auto;
+  max-width:94%;
+  object-fit:contain;
+  object-position:center bottom;
+  filter:drop-shadow(0 12px 16px rgba(34,48,39,.06));
+}
+.folder.ian .thumb{
+  background:
+    repeating-linear-gradient(0deg,transparent 0,transparent 5px,rgba(255,255,255,.018) 6px),
+    radial-gradient(circle at 50% 35%,rgba(151,164,135,.09),transparent 53%),
+    var(--portrait-bg,#202620);
+}
+.folder.ian .thumb::after{
+  content:"PERSONNEL PORTRAIT / SHELTER NO.435";
+  color:rgba(202,174,115,.48);
+}
+.folder.ian .thumb img{
+  filter:drop-shadow(0 14px 18px rgba(0,0,0,.25));
+}
+
 </style>
 </head>
 <body>
@@ -41,50 +81,50 @@ h1{margin:16px 0 18px;font:900 clamp(52px,9vw,118px)/.85 "Arial Narrow",Arial,sa
   </section>
   <section class="folder-grid">
     
-<a class="folder" href="./gallery/miu.html">
-  <div class="thumb"><img src="./images/fullbody/miu.webp" alt="미우 전신 이미지"></div>
+<a class="folder" href="./gallery/miu.html" style="--portrait-bg:#E8EFE9">
+  <div class="thumb"><img src="./images/portraits/miu.webp" alt="미우 전신 이미지"></div>
   <div class="folder-info">
     <div><span>PHOTO ARCHIVE</span><b>MIU</b></div>
     <em>01 FILE →</em>
   </div>
 </a>
-<a class="folder" href="./gallery/mary.html">
-  <div class="thumb"><img src="./images/fullbody/mary.png" alt="메리 전신 이미지"></div>
+<a class="folder" href="./gallery/mary.html" style="--portrait-bg:#F6EBEB">
+  <div class="thumb"><img src="./images/portraits/mary.webp" alt="메리 전신 이미지"></div>
   <div class="folder-info">
     <div><span>PHOTO ARCHIVE</span><b>MARY</b></div>
     <em>01 FILE →</em>
   </div>
 </a>
-<a class="folder" href="./gallery/lulu.html">
-  <div class="thumb"><img src="./images/fullbody/lulu.webp" alt="루루 전신 이미지"></div>
+<a class="folder" href="./gallery/lulu.html" style="--portrait-bg:#FBEDF5">
+  <div class="thumb"><img src="./images/portraits/lulu.webp" alt="루루 전신 이미지"></div>
   <div class="folder-info">
     <div><span>PHOTO ARCHIVE</span><b>LULU</b></div>
     <em>01 FILE →</em>
   </div>
 </a>
-<a class="folder" href="./gallery/rio.html">
-  <div class="thumb"><img src="./images/fullbody/rio.png" alt="리오 전신 이미지"></div>
+<a class="folder" href="./gallery/rio.html" style="--portrait-bg:#EEEAFD">
+  <div class="thumb"><img src="./images/portraits/rio.webp" alt="리오 전신 이미지"></div>
   <div class="folder-info">
     <div><span>PHOTO ARCHIVE</span><b>RIO</b></div>
     <em>01 FILE →</em>
   </div>
 </a>
-<a class="folder" href="./gallery/popo.html">
-  <div class="thumb"><img src="./images/fullbody/popo.png" alt="포포 전신 이미지"></div>
+<a class="folder" href="./gallery/popo.html" style="--portrait-bg:#F8EEE3">
+  <div class="thumb"><img src="./images/portraits/popo.webp" alt="포포 전신 이미지"></div>
   <div class="folder-info">
     <div><span>PHOTO ARCHIVE</span><b>POPO</b></div>
     <em>01 FILE →</em>
   </div>
 </a>
-<a class="folder" href="./gallery/nero.html">
-  <div class="thumb"><img src="./images/fullbody/nero.webp" alt="네로 전신 이미지"></div>
+<a class="folder" href="./gallery/nero.html" style="--portrait-bg:#E8EFFB">
+  <div class="thumb"><img src="./images/portraits/nero.webp" alt="네로 전신 이미지"></div>
   <div class="folder-info">
     <div><span>PHOTO ARCHIVE</span><b>NERO</b></div>
     <em>01 FILE →</em>
   </div>
 </a>
-<a class="folder ian" href="./gallery/ian.html">
-  <div class="thumb"><img src="./images/fullbody/ian.png" alt="이안 카터 전신 이미지"></div>
+<a class="folder ian" href="./gallery/ian.html" style="--portrait-bg:#202620">
+  <div class="thumb"><img src="./images/portraits/ian.webp" alt="이안 카터 전신 이미지"></div>
   <div class="folder-info">
     <div><span>FIELD IMAGE RECORDS</span><b>IAN CARTER</b></div>
     <em>01 FILE →</em>

@@ -31,3 +31,22 @@ gallery/<character>.html의 ADD PHOTO placeholder를 이미지 태그로 교체�
   <img src="../images/gallery/miu/002.webp" alt="미우 일상 사진">
   <figcaption class="caption">FILE 002 / DAILY LIFE</figcaption>
 </figure>
+
+
+v5 / 증사 갤러리
+----------------
+- 각 캐릭터 상세페이지의 전신 VISUAL RECORD는 그대로 유지
+- gallery.html 폴더 표지를 투명 증사로 변경
+- 개인 gallery/<name>.html의 FILE 001을 증사로 변경
+- 투명 증사의 배경은 CSS로 캐릭터별 색상 적용
+- 이안은 SHELTER PERSONNEL 전용 어두운 배경
+
+증사:
+images/portraits/
+  miu.webp
+  nero.webp
+  rio.webp
+  popo.webp
+  mary.webp
+  lulu.webp
+  ian.webp
