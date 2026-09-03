@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MARY / Personal Record</title>
+<style>
+:root{--accent:#708d79;--paper:#f6f8f5;--ink:#243129;--muted:#738077;--line:#d8e0da;--dark:#151a17;--amber:#c5a365}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef3ef;color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;word-break:keep-all}
+a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;height:64px;padding:0 clamp(18px,4vw,64px);display:flex;align-items:center;justify-content:space-between;background:rgba(246,248,245,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.back{font:700 10px/1 monospace;letter-spacing:.1em;color:var(--muted)}.mark{font:800 12px/1 monospace;letter-spacing:.12em;color:var(--accent)}
+.record{width:min(1180px,calc(100% - 28px));margin:42px auto 90px;background:#fff;border:1px solid var(--line);box-shadow:0 30px 80px rgba(40,58,46,.09)}
+.record-head{padding:34px clamp(22px,5vw,56px);display:grid;grid-template-columns:1fr auto;gap:24px;border-bottom:3px solid var(--accent);background:linear-gradient(90deg,rgba(112,141,121,.08),transparent)}
+.kicker{font:700 10px/1 monospace;letter-spacing:.11em;color:var(--accent)}h1{margin:12px 0 6px;font-size:clamp(40px,7vw,88px);line-height:.9;letter-spacing:-.06em}h1 span{display:block;margin-top:12px;font:900 clamp(22px,3vw,40px)/1 "Arial Narrow",Arial,sans-serif;color:var(--accent);letter-spacing:-.02em}
+.code{align-self:end;text-align:right;color:#8a958e;font:600 10px/1.7 monospace}
+.card-wrap{padding:28px clamp(22px,5vw,56px);border-bottom:1px solid var(--line);background:#fafcf9}.card-wrap img{display:block;width:100%;border:1px solid rgba(112,141,121,.16)}
+.grid{display:grid;grid-template-columns:210px 1fr}.label{padding:22px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#f4f7f4;color:#77847c;font:700 10px/1.4 monospace;letter-spacing:.08em}.value{padding:21px 28px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.85;white-space:pre-line}
+.basic{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.basic div{padding:18px 22px;border-right:1px solid var(--line)}.basic div:last-child{border-right:0}.basic b{display:block;margin-bottom:8px;color:#89958e;font:700 9px/1 monospace;letter-spacing:.08em}.basic span{font-weight:800}
+.restricted{margin:36px clamp(22px,5vw,56px) 50px;border:1px solid #cfc7b7;background:#191d1a;color:#ddd8ca}.restricted summary{position:relative;list-style:none;cursor:pointer;padding:22px 56px 22px 24px;color:var(--amber);font:800 11px/1.4 monospace;letter-spacing:.1em}.restricted summary::-webkit-details-marker{display:none}.restricted summary::after{content:"OPEN";position:absolute;right:22px;top:22px;color:#91846c;font-size:9px}.restricted[open] summary::after{content:"CLOSE"}.restricted .inside{padding:0 24px 26px;border-top:1px solid rgba(197,163,101,.22)}.restricted .rrow{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.07)}.restricted .rrow:last-child{border-bottom:0}.restricted .rrow b{color:#aa9b7f;font:700 9px/1.5 monospace;letter-spacing:.08em}.restricted .rrow span{font-size:13px;line-height:1.75;color:#d4d6d1}
+.footer{padding:24px clamp(22px,5vw,56px);display:flex;justify-content:space-between;gap:20px;color:#8b968f;background:#f4f7f4;font:600 9px/1 monospace;letter-spacing:.08em}
+.archive-page{background:#101411;color:#e5e1d6}.archive-page .top{background:rgba(16,20,17,.9);border-color:rgba(197,163,101,.2)}.archive-page .back{color:#9d927e}.archive-page .record{background:#171c18;border-color:rgba(197,163,101,.35);box-shadow:0 30px 80px rgba(0,0,0,.28)}.archive-page .record-head{border-bottom-color:var(--amber);background:linear-gradient(90deg,rgba(197,163,101,.10),transparent)}.archive-page .kicker,.archive-page h1 span,.archive-page .mark{color:var(--amber)}.archive-page .code{color:#807a6e}.archive-page .card-wrap{background:#131713;border-color:rgba(197,163,101,.18)}.archive-page .card-wrap img{border-color:rgba(197,163,101,.25)}.archive-page .basic,.archive-page .label,.archive-page .value{border-color:rgba(197,163,101,.15)}.archive-page .label{background:#141814;color:#918b7d}.archive-page .value{background:#181d19}.archive-page .basic div{border-color:rgba(197,163,101,.15)}.archive-page .basic b{color:#8d8678}.archive-page .footer{background:#131713;color:#7f786d}.archive-page .restricted{background:#0e110f}
+@media(max-width:700px){.record{margin-top:18px}.record-head{grid-template-columns:1fr}.code{text-align:left}.basic{grid-template-columns:1fr 1fr}.basic div:nth-child(2){border-right:0}.grid{grid-template-columns:1fr}.label{border-right:0;padding-bottom:8px}.value{padding-top:8px}.restricted .rrow{grid-template-columns:1fr;gap:8px}.footer{flex-direction:column}}
+
+.relation-record{margin:36px clamp(22px,5vw,56px) 0;border:1px solid var(--line);background:#fafcf9}
+.relation-head{padding:16px 20px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);background:#f2f6f2}
+.relation-head span{color:var(--accent);font:800 10px/1 monospace;letter-spacing:.1em}
+.relation-head b{color:#66746b;font-size:12px}
+.relation-row{display:grid;grid-template-columns:180px 1fr;gap:22px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.relation-row:last-child{border-bottom:0}
+.relation-row b{font-size:13px}
+.relation-row span{color:#68766d;font-size:13px;line-height:1.75}
+.archive-page .relation-record{background:#151a17;border-color:rgba(197,163,101,.24)}
+.archive-page .relation-head{background:#121612;border-color:rgba(197,163,101,.18)}
+.archive-page .relation-head span{color:var(--amber)}
+.archive-page .relation-head b{color:#9b927f}
+.archive-page .relation-row{border-color:rgba(197,163,101,.13)}
+.archive-page .relation-row span{color:#aaa99f}
+@media(max-width:700px){.relation-row{grid-template-columns:1fr;gap:7px}}
+
+
+/* v2: 내면 기록 / 생활 습관 UI */
+.inner-value{
+  padding:16px 20px;
+}
+.inner-table{
+  overflow:hidden;
+  border:1px solid rgba(110,128,117,.18);
+  border-radius:10px;
+  background:rgba(111,128,117,.035);
+  opacity:.72;
+}
+.inner-row{
+  display:grid;
+  grid-template-columns:74px 1fr;
+  min-height:48px;
+  border-bottom:1px solid rgba(110,128,117,.13);
+}
+.inner-row:last-child{
+  border-bottom:0;
+}
+.inner-key{
+  padding:14px 12px;
+  display:flex;
+  align-items:center;
+  color:#829088;
+  border-right:1px solid rgba(110,128,117,.13);
+  background:rgba(110,128,117,.035);
+  font:700 9px/1.35 monospace;
+  letter-spacing:.08em;
+}
+.inner-text{
+  padding:13px 16px;
+  display:flex;
+  align-items:center;
+  color:#657269;
+  font-size:12.5px;
+  line-height:1.7;
+}
+
+.habit-value{
+  padding:11px 28px;
+}
+.habit-list{
+  display:flex;
+  flex-direction:column;
+}
+.habit-line{
+  position:relative;
+  min-height:38px;
+  padding:9px 8px 9px 28px;
+  display:flex;
+  align-items:center;
+  color:#5f6d64;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  font-size:13px;
+  line-height:1.55;
+}
+.habit-line:last-child{
+  border-bottom:0;
+}
+.habit-line::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  width:8px;
+  height:1px;
+  background:var(--accent);
+  opacity:.52;
+}
+
+/* 셸터 기록용 */
+.archive-page .inner-table{
+  border-color:rgba(197,163,101,.15);
+  background:rgba(197,163,101,.025);
+  opacity:.67;
+}
+.archive-page .inner-row{
+  border-color:rgba(197,163,101,.11);
+}
+.archive-page .inner-key{
+  color:#8f887a;
+  border-color:rgba(197,163,101,.11);
+  background:rgba(197,163,101,.025);
+}
+.archive-page .inner-text{
+  color:#a4aaa3;
+}
+.archive-page .habit-line{
+  color:#a7ada6;
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-line::before{
+  background:var(--amber);
+  opacity:.46;
+}
+
+@media(max-width:700px){
+  .inner-value{padding:10px 14px 16px}
+  .inner-row{grid-template-columns:64px 1fr}
+  .inner-key{padding:12px 10px}
+  .inner-text{padding:12px 13px}
+  .habit-value{padding:5px 18px 14px}
+}
+
+
+/* v3 observation-record UI */
+.observation-value{
+  padding:20px 26px;
+}
+.observation-note{
+  position:relative;
+  padding:18px 20px 18px 24px;
+  color:#5f6e64;
+  border-left:2px solid color-mix(in srgb, var(--accent) 52%, transparent);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 5%, transparent), transparent 58%);
+  font-size:13px;
+  line-height:1.92;
+}
+.observation-note::before{
+  content:"OBSERVATION";
+  display:block;
+  margin-bottom:9px;
+  color:#93a097;
+  font:700 8px/1 monospace;
+  letter-spacing:.12em;
+}
+
+.habit-value{
+  padding:7px 28px 12px;
+}
+.habit-observation{
+  padding:13px 4px 12px 28px;
+  border-bottom:1px solid rgba(110,128,117,.12);
+  position:relative;
+}
+.habit-observation:last-child{
+  border-bottom:0;
+}
+.habit-observation::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:22px;
+  width:9px;
+  height:1px;
+  background:var(--accent);
+  opacity:.48;
+}
+.habit-main{
+  color:#59675e;
+  font-size:13px;
+  line-height:1.65;
+}
+.habit-aside{
+  margin-top:5px;
+  color:#9aa39d;
+  font-size:11px;
+  line-height:1.55;
+  font-style:italic;
+}
+.habit-aside::before{
+  content:"↳ ";
+  opacity:.7;
+}
+
+.archive-page .observation-note{
+  color:#a9afa9;
+  border-left-color:rgba(197,163,101,.34);
+  background:linear-gradient(90deg,rgba(197,163,101,.035),transparent 58%);
+}
+.archive-page .observation-note::before{
+  color:#837e72;
+  content:"ASSESSMENT";
+}
+.archive-page .habit-main{
+  color:#a7ada6;
+}
+.archive-page .habit-aside{
+  display:none;
+}
+.archive-page .habit-observation{
+  border-color:rgba(197,163,101,.10);
+}
+.archive-page .habit-observation::before{
+  background:var(--amber);
+  opacity:.38;
+}
+
+@media(max-width:700px){
+  .observation-value{padding:10px 14px 16px}
+  .observation-note{padding:15px 16px 15px 19px}
+  .habit-value{padding:3px 18px 12px}
+}
+
+
+/* v4: visual record */
+.visual-record{
+  margin:36px clamp(22px,5vw,56px);
+  padding:24px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(112,141,121,.025), transparent),
+    #fbfcfa;
+}
+.visual-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+.visual-head div span{
+  display:block;
+  color:var(--accent);
+  font:800 10px/1 monospace;
+  letter-spacing:.1em;
+}
+.visual-head div b{
+  display:block;
+  margin-top:7px;
+  font-size:17px;
+  letter-spacing:-.02em;
+}
+.visual-head em{
+  color:#9aa49e;
+  font:normal 700 8px/1 monospace;
+  letter-spacing:.08em;
+}
+.fullbody-stage{
+  min-height:640px;
+  padding:34px 20px 14px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(110,128,117,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110,128,117,.035) 1px, transparent 1px);
+  background-size:28px 28px;
+}
+.fullbody-stage img{
+  display:block;
+  width:auto;
+  max-width:min(560px, 92%);
+  max-height:780px;
+  object-fit:contain;
+  filter:drop-shadow(0 22px 24px rgba(40,55,45,.08));
+}
+.visual-foot{
+  padding-top:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.visual-foot span{
+  color:#929d96;
+  font:700 8px/1 monospace;
+  letter-spacing:.09em;
+}
+.gallery-open{
+  padding:12px 15px;
+  border:1px solid color-mix(in srgb,var(--accent) 32%, #d8e0da);
+  color:var(--accent);
+  background:#fff;
+  font:800 9px/1 monospace;
+  letter-spacing:.08em;
+  transition:transform .18s ease,background .18s ease;
+}
+.gallery-open:hover{
+  transform:translateY(-2px);
+  background:color-mix(in srgb,var(--accent) 5%, white);
+}
+.archive-page .visual-record{
+  border-color:rgba(197,163,101,.24);
+  background:#141814;
+}
+.archive-page .visual-head{
+  border-color:rgba(197,163,101,.15);
+}
+.archive-page .visual-head div span{
+  color:var(--amber);
+}
+.archive-page .visual-head div b{
+  color:#d8d4c9;
+}
+.archive-page .visual-head em{
+  color:#77756c;
+}
+.archive-page .fullbody-stage{
+  background:
+    repeating-linear-gradient(0deg,transparent 0,transparent 4px,rgba(197,163,101,.018) 5px),
+    #111512;
+}
+.archive-page .fullbody-stage img{
+  filter:drop-shadow(0 22px 28px rgba(0,0,0,.28));
+}
+.archive-page .gallery-open{
+  color:var(--amber);
+  border-color:rgba(197,163,101,.28);
+  background:#111512;
+}
+@media(max-width:700px){
+  .visual-record{margin:24px 14px;padding:15px}
+  .visual-head{align-items:flex-start;flex-direction:column}
+  .fullbody-stage{min-height:440px;padding:24px 5px 10px}
+  .fullbody-stage img{max-width:96%;max-height:620px}
+  .visual-foot{align-items:flex-start;flex-direction:column}
+}
+
+
+/* hobby record */
+.hobby-value .habit-observation{
+  border-bottom:0;
+}
+.archive-page .hobby-value .habit-aside{
+  display:block;
+  color:#7f867f;
+}
+
+</style>
+</head>
+<body class="" style="--accent:#ad6f75">
+<header class="top">
+  <a class="back" href="../index.html#citizens">← BACK TO REGISTRY</a>
+  <span class="mark">CIVIC PERSONAL RECORD / 2486</span>
+</header>
+<main class="record">
+  <section class="record-head">
+    <div>
+      <div class="kicker">PERSONAL ACTIVITY & OBSERVATION RECORD</div>
+      <h1>메리<span>MARY</span></h1>
+    </div>
+    <div class="code">🦌 / CERVID<br>30 / F / 175 CM<br>중등학교 교사</div>
+  </section>
+  <section class="card-wrap"><img src="../../images/cards/mary.png" alt="메리 프로필 카드"></section>
+  
+  <section class="visual-record">
+    <div class="visual-head">
+      <div>
+        <span>VISUAL RECORD / CURRENT</span>
+        <b>전신</b>
+      </div>
+      <em>FILE 01 / FULL BODY</em>
+    </div>
+
+    <div class="fullbody-stage">
+      <img src="../../images/fullbody/mary.webp" alt="메리 전신 이미지">
+    </div>
+
+    <div class="visual-foot">
+      <span>CIVIC VISUAL REFERENCE · CURRENT FILE</span>
+      <a class="gallery-open" href="../gallery/mary.html">OPEN PHOTO ARCHIVE →</a>
+    </div>
+  </section>
+
+  <section class="basic">
+    <div><b>SPECIES</b><span>CERVID</span></div>
+    <div><b>AGE / SEX</b><span>30 / F</span></div>
+    <div><b>HEIGHT</b><span>175 CM</span></div>
+    <div><b>ASSIGNMENT</b><span>중등학교 교사</span></div>
+  </section>
+  <section class="grid">
+    <div class="label">성격 / PERSONA</div><div class="value">차분 · 다정 · 관찰력 · 신중 · 중심이 단단함</div>
+    <div class="label">내면 기록</div><div class="value observation-value"><div class="observation-note">타인이 자기 힘으로 설 수 있도록 안정적인 기반을 마련해주는 데 보람을 느끼는 편이다. 다만 도움을 어디에서 멈춰야 하는지 늦게 판단해, 상대가 감당해야 할 몫까지 자연스럽게 자기 책임으로 가져오는 경우가 있다.</div></div>
+<div class="label">생활 습관</div><div class="value habit-value"><div class="habit-observation"><div class="habit-main">한번 맡았던 학생의 이름을 오래 기억하는 편이다.</div><div class="habit-aside">졸업한 뒤 다시 만나도 먼저 이름을 부르는 경우가 많다.</div></div><div class="habit-observation"><div class="habit-main">필기구와 작은 메모지를 늘 챙겨 다닌다.</div><div class="habit-aside">빌려달라고 하면 종류별로 하나씩 나올 때도 있다.</div></div><div class="habit-observation"><div class="habit-main">말투는 부드럽지만 잘못된 부분을 지적할 때는 내용 자체를 흐리지 않는다.</div><div class="habit-aside">웃으면서 말해도 고칠 건 정확히 고치게 된다.</div></div></div>
+  
+<div class="label">취미</div><div class="value habit-value hobby-value"><div class="habit-observation"><div class="habit-main">실내식물 돌보기·압화</div><div class="habit-aside">작은 잎을 정리하고 식물의 상태를 꼼꼼히 살피는 편.</div></div></div>
+</section>
+
+  <section class="relation-record">
+    <div class="relation-head">
+      <span>RELATION RECORD</span>
+      <b>기존 관계</b>
+    </div>
+      <div class="relation-row">
+        <b>🐈 미우</b>
+        <span>동네 지인</span>
+      </div>
+      <div class="relation-row">
+        <b>🐇 루루</b>
+        <span>전 교사–졸업생 관계</span>
+      </div>
+  </section>
+<footer class="footer"><span>CITY NETWORK · CIVIL REGISTRY</span><span>PERSONAL RECORD / MARY</span></footer>
+</main>
+</body></html>

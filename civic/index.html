@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eef4ef">
+  <title>CIVIC NETWORK / 2486</title>
+  <link rel="stylesheet" href="./style.css">
+
+<style>
+/* v6 / UNKNOWN RECORD — CIVIC side should not know Ian yet */
+.ian-card.unknown-record{
+  position:relative;
+  overflow:hidden;
+  min-height:240px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.014) 0,
+      rgba(255,255,255,.014) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    #101411;
+  border:1px solid rgba(197,163,101,.30);
+  cursor:pointer;
+  isolation:isolate;
+}
+.ian-card.unknown-record > img,
+.ian-card.unknown-record > .ian-status{
+  opacity:0;
+  visibility:hidden;
+}
+.ian-card.unknown-record::before{
+  content:"???";
+  opacity: 1;
+  position:relative;
+  z-index:4;
+  color:rgba(210,194,154,.78);
+  font:900 clamp(58px,9vw,118px)/1 "Courier New",monospace;
+  letter-spacing:.12em;
+  text-shadow:
+    2px 0 rgba(127,158,137,.16),
+    -2px 0 rgba(168,124,139,.14);
+}
+.ian-card.unknown-record::after{
+  content:"UNREGISTERED RECORD / DATA MISMATCH";
+  position:absolute;
+  z-index:4;
+  left:20px;
+  bottom:17px;
+  color:rgba(197,163,101,.42);
+  font:700 8px/1 monospace;
+  letter-spacing:.10em;
+}
+
+/* hover noise/glitch */
+.ian-card.unknown-record:hover{
+  animation:unknownJitter .32s steps(2,end) infinite;
+}
+.ian-card.unknown-record:hover::before{
+  animation:unknownTextGlitch .22s steps(2,end) infinite;
+}
+.ian-card.unknown-record:hover::after{
+  color:rgba(197,163,101,.72);
+}
+.ian-card.unknown-record .unknown-noise{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  opacity:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      transparent 0 16%,
+      rgba(157,184,162,.12) 16% 18%,
+      transparent 18% 52%,
+      rgba(178,135,151,.10) 52% 54%,
+      transparent 54% 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 5px,
+      rgba(255,255,255,.05) 6px
+    );
+}
+.ian-card.unknown-record:hover .unknown-noise{
+  opacity:.78;
+  animation:unknownScan .18s steps(2,end) infinite;
+}
+
+@keyframes unknownJitter{
+  0%{transform:translate(0)}
+  25%{transform:translate(2px,-1px)}
+  50%{transform:translate(-2px,1px)}
+  75%{transform:translate(1px,1px)}
+  100%{transform:translate(0)}
+}
+@keyframes unknownTextGlitch{
+  0%{transform:translate(0);filter:none}
+  33%{transform:translate(5px,0);filter:blur(.2px)}
+  66%{transform:translate(-4px,1px)}
+  100%{transform:translate(0)}
+}
+@keyframes unknownScan{
+  0%{transform:translateX(-4px)}
+  50%{transform:translateX(5px)}
+  100%{transform:translateX(0)}
+}
+
+@media(max-width:900px){
+  .ian-card.unknown-record{
+    min-height:190px;
+  }
+  .ian-card.unknown-record::before{
+    font-size:54px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="처음으로">
+      <span class="brand-mark">CIVIC</span>
+      <span class="brand-sub">NETWORK / 2486</span>
+    </a>
+
+    <nav class="nav" aria-label="메인 메뉴">
+      <a href="#world">WORLD</a>
+      <a href="#citizens">CITIZENS</a>
+      <a href="./gallery.html">GALLERY</a>
+      <a href="#archive">ARCHIVE</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-frame">
+        <img
+          class="hero-moving"
+          src="../images/moving_s.png"
+          alt="도시를 걷는 일곱 인물"
+          fetchpriority="high"
+        >
+        <div class="hero-noise" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="eyebrow">CITY CIVIL REGISTRY · PUBLIC ACCESS</div>
+        <h1>
+          <span>THE CITY IS</span>
+          <strong>ORDINARY.</strong>
+        </h1>
+        <p>
+          평범한 일상과 익숙한 도시. 서로 다른 종의 흔적을 지닌 사람들이
+          같은 이름 아래 살아간다. 기록상, 이곳에는 특별한 비밀이 없다.
+        </p>
+        <div class="hero-meta">
+          <span>STATUS / ONLINE</span>
+          <span>LOCAL YEAR / 2486</span>
+          <span>ACCESS / CIVIL</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="world section" id="world">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">01</span>
+          <h2>WORLD / CITY LIFE</h2>
+        </div>
+        <p>현대와 크게 다르지 않은 도시의 평범한 생활 기록.</p>
+      </div>
+
+      <a class="world-detail-link" href="./world.html">
+        <span>OPEN FULL WORLD RECORD</span>
+        <b>WORLD ARCHIVE →</b>
+      </a>
+
+      <div class="world-grid">
+        <article>
+          <span class="mini-label">CIVIL LIFE</span>
+          <h3>일상은 계속된다.</h3>
+          <p>
+            학교, 병원, 생활물류점, 공공기관과 도시 설비.
+            각자는 자신의 직업과 생활권 안에서 독립적인 하루를 보낸다.
+          </p>
+        </article>
+
+        <article>
+          <span class="mini-label">SPECIES</span>
+          <h3>다른 형질, 같은 사회.</h3>
+          <p>
+            조상종의 외형과 감각이 다양하게 남아 있지만,
+            그것이 한 사람의 성격이나 삶을 결정하지는 않는다.
+          </p>
+        </article>
+
+        <article>
+          <span class="mini-label">ARCHIVE</span>
+          <h3>모든 기록이 공개되지는 않는다.</h3>
+          <p>
+            도시의 시민 등록망 바깥에도 오래된 기록이 남아 있다.
+            일부 항목은 일반 시민 체계와 호환되지 않는다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="citizens section" id="citizens">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">02</span>
+          <h2>CIVIC PROFILES</h2>
+        </div>
+        <p>카드를 누르면 원본 크기로 확인할 수 있음.</p>
+      </div>
+
+      <div class="card-grid">
+        <a class="profile-card miu" href="./profiles/miu.html">
+          <img src="../images/cards/miu.png" alt="미우 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>MIU</b><em>FELINE · 26</em>
+          </span>
+        </a>
+
+        <a class="profile-card mary" href="./profiles/mary.html">
+          <img src="../images/cards/mary.png" alt="메리 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>MARY</b><em>CERVID · 30</em>
+          </span>
+        </a>
+
+        <a class="profile-card lulu" href="./profiles/lulu.html">
+          <img src="../images/cards/lulu.png" alt="루루 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>LULU</b><em>LEPORID · 21</em>
+          </span>
+        </a>
+
+        <a class="profile-card rio" href="./profiles/rio.html">
+          <img src="../images/cards/rio.png" alt="리오 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>RIO</b><em>SERPENT · 35</em>
+          </span>
+        </a>
+
+        <a class="profile-card popo" href="./profiles/popo.html">
+          <img src="../images/cards/popo.png" alt="포포 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>POPO</b><em>CANINE · 27</em>
+          </span>
+        </a>
+
+        <a class="profile-card nero" href="./profiles/nero.html">
+          <img src="../images/cards/nero.png" alt="네로 시민 프로필 카드" loading="lazy">
+          <span class="profile-caption">
+            <b>NERO</b><em>SELACHIAN · 33</em>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="archive" id="archive">
+      <div class="archive-scanlines" aria-hidden="true"></div>
+
+      <div class="archive-inner">
+        <div class="archive-heading">
+          <span class="archive-index">03 / RESTRICTED</span>
+          <h2>SHELTER ARCHIVE</h2>
+          <p>
+            CIVIC NETWORK와 일치하지 않는 비정상 데이터 감지.
+            등록 출처와 기록 주체 현재 식별 불가.
+          </p>
+        </div>
+
+        <a class="ian-card unknown-record" href="./profiles/ian.html" aria-label="정체불명의 기록 열람">
+          <span class="unknown-noise" aria-hidden="true"></span>
+        </a>
+
+        <div class="archive-footer">
+          <span>SOURCE / UNKNOWN</span>
+          <span>ACCESS / UNVERIFIED</span>
+          <span>RECORD STATUS / CORRUPTED</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>CITY NETWORK · CIVIL REGISTRY</span>
+    <span>ARCHIVE INTERFACE / 2486</span>
+  </footer>
+
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PHOTO ARCHIVE / 2486</title>
+<style>
+:root{--paper:#f5f8f5;--ink:#203128;--muted:#748178;--line:#d7e0d9;--green:#708d79;--dark:#131713;--amber:#c5a365}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#edf3ee;color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;word-break:keep-all}
+a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;height:64px;padding:0 clamp(18px,4vw,64px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(246,249,246,.88);backdrop-filter:blur(14px)}
+.top a,.top span{font:700 10px/1 monospace;letter-spacing:.1em;color:var(--muted)}
+.wrap{width:min(1260px,calc(100% - 28px));margin:44px auto 100px}
+.hero{padding:52px clamp(22px,5vw,64px);border:1px solid var(--line);background:#fff}
+.kicker{color:var(--green);font:800 10px/1 monospace;letter-spacing:.12em}
+h1{margin:16px 0 18px;font:900 clamp(52px,9vw,118px)/.85 "Arial Narrow",Arial,sans-serif;letter-spacing:-.065em}
+.hero p{max-width:720px;margin:0;color:#6d7a72;font-size:14px;line-height:1.85}
+.folder-grid{margin-top:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.folder{position:relative;overflow:hidden;min-height:390px;border:1px solid var(--line);background:#fff;transition:transform .22s ease,box-shadow .22s ease}
+.folder:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(43,62,49,.09)}
+.thumb{height:310px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;background:linear-gradient(180deg,#fbfcfa,#f1f5f1)}
+.thumb img{height:100%;width:auto;max-width:85%;object-fit:contain;object-position:center bottom}
+.folder-info{padding:18px 20px;display:flex;align-items:end;justify-content:space-between;gap:18px;border-top:1px solid var(--line)}
+.folder-info span{display:block;color:#96a198;font:700 8px/1 monospace;letter-spacing:.08em}
+.folder-info b{display:block;margin-top:6px;font:900 18px/1 "Arial Narrow",Arial,sans-serif;letter-spacing:.02em}
+.folder-info em{color:#87938b;font:normal 700 9px/1 monospace}
+.folder.ian{grid-column:1/-1;color:#ddd8cd;border-color:rgba(197,163,101,.38);background:#151a17}
+.folder.ian .thumb{height:360px;background:#101411}
+.folder.ian .folder-info{border-color:rgba(197,163,101,.2)}
+.folder.ian .folder-info span,.folder.ian .folder-info em{color:#8d877a}.folder.ian .folder-info b{color:#cbae70}
+.footer{padding:28px 0;display:flex;justify-content:space-between;gap:20px;color:#89958e;font:700 9px/1 monospace;letter-spacing:.08em}
+@media(max-width:760px){.folder-grid{grid-template-columns:1fr}.folder.ian{grid-column:auto}.thumb,.folder.ian .thumb{height:300px}.footer{flex-direction:column}}
+
+/* v5 / portrait folder covers */
+.folder .thumb{
+  position:relative;
+  align-items:flex-end;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(255,255,255,.82) 0 16%, rgba(255,255,255,.26) 46%, transparent 72%),
+    var(--portrait-bg,#eef3ee);
+}
+.folder .thumb::after{
+  content:"ID PORTRAIT / CIVIC REGISTRY";
+  position:absolute;
+  left:13px;
+  top:12px;
+  color:rgba(60,77,66,.42);
+  font:700 7px/1 monospace;
+  letter-spacing:.1em;
+}
+.folder .thumb img{
+  height:96%;
+  width:auto;
+  max-width:94%;
+  object-fit:contain;
+  object-position:center bottom;
+  filter:drop-shadow(0 12px 16px rgba(34,48,39,.06));
+}
+.folder.ian .thumb{
+  background:
+    repeating-linear-gradient(0deg,transparent 0,transparent 5px,rgba(255,255,255,.018) 6px),
+    radial-gradient(circle at 50% 35%,rgba(151,164,135,.09),transparent 53%),
+    var(--portrait-bg,#202620);
+}
+.folder.ian .thumb::after{
+  content:"PERSONNEL PORTRAIT / SHELTER NO.435";
+  color:rgba(202,174,115,.48);
+}
+.folder.ian .thumb img{
+  filter:drop-shadow(0 14px 18px rgba(0,0,0,.25));
+}
+
+
+/* v6 / UNKNOWN gallery folder */
+.folder.ian.unknown-folder{
+  position:relative;
+  grid-column:1/-1;
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid rgba(197,163,101,.30);
+  background:#101411;
+  isolation:isolate;
+}
+.folder.ian.unknown-folder .thumb,
+.folder.ian.unknown-folder .folder-info{
+  display:none;
+}
+.folder.ian.unknown-folder::before{
+  content:"???";
+  position:relative;
+  z-index:4;
+  color:rgba(210,194,154,.76);
+  font:900 clamp(60px,10vw,126px)/1 "Courier New",monospace;
+  letter-spacing:.14em;
+  text-shadow:
+    3px 0 rgba(116,156,134,.16),
+    -3px 0 rgba(174,125,145,.14);
+}
+.folder.ian.unknown-folder::after{
+  content:"UNREGISTERED VISUAL DATA / CLICK TO ACCESS";
+  position:absolute;
+  z-index:4;
+  left:20px;
+  bottom:18px;
+  color:rgba(197,163,101,.42);
+  font:700 8px/1 monospace;
+  letter-spacing:.10em;
+}
+.folder.ian.unknown-folder .unknown-noise{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  opacity:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      transparent 0 13%,
+      rgba(151,181,159,.12) 13% 15%,
+      transparent 15% 47%,
+      rgba(183,132,151,.10) 47% 50%,
+      transparent 50% 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 5px,
+      rgba(255,255,255,.05) 6px
+    );
+}
+.folder.ian.unknown-folder:hover{
+  animation:folderJitter .30s steps(2,end) infinite;
+  box-shadow:0 0 0 1px rgba(197,163,101,.08),0 20px 55px rgba(0,0,0,.22);
+}
+.folder.ian.unknown-folder:hover::before{
+  animation:folderTextGlitch .20s steps(2,end) infinite;
+}
+.folder.ian.unknown-folder:hover .unknown-noise{
+  opacity:.78;
+  animation:folderNoise .16s steps(2,end) infinite;
+}
+@keyframes folderJitter{
+  0%{transform:translate(0)}
+  30%{transform:translate(2px,-1px)}
+  60%{transform:translate(-2px,1px)}
+  100%{transform:translate(0)}
+}
+@keyframes folderTextGlitch{
+  0%{transform:translateX(0)}
+  35%{transform:translateX(6px)}
+  70%{transform:translateX(-5px)}
+  100%{transform:translateX(0)}
+}
+@keyframes folderNoise{
+  0%{transform:translateX(-5px)}
+  50%{transform:translateX(6px)}
+  100%{transform:translateX(0)}
+}
+@media(max-width:760px){
+  .folder.ian.unknown-folder{
+    grid-column:auto;
+    min-height:230px;
+  }
+  .folder.ian.unknown-folder::before{
+    font-size:56px;
+  }
+}
+
+</style>
+</head>
+<body>
+<header class="top"><a href="./index.html">← BACK TO CIVIC NETWORK</a><span>PHOTO ARCHIVE / 2486</span></header>
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">CITY NETWORK · PERSONAL VISUAL ARCHIVE</div>
+    <h1>PHOTO<br>ARCHIVE</h1>
+    <p>시민별 시각 기록 보관함. 등록된 개인 기록을 열람할 수 있으며, 일부 데이터는 출처가 확인되지 않는다.</p>
+  </section>
+  <section class="folder-grid">
+    
+<a class="folder" href="./gallery/miu.html" style="--portrait-bg:#E8EFE9">
+  <div class="thumb"><img src="../images/portraits/miu.webp" alt="미우 전신 이미지"></div>
+  <div class="folder-info">
+    <div><span>PHOTO ARCHIVE</span><b>MIU</b></div>
+    <em>01 FILE →</em>
+  </div>
+</a>
+<a class="folder" href="./gallery/mary.html" style="--portrait-bg:#F6EBEB">
+  <div class="thumb"><img src="../images/portraits/mary.webp" alt="메리 전신 이미지"></div>
+  <div class="folder-info">
+    <div><span>PHOTO ARCHIVE</span><b>MARY</b></div>
+    <em>01 FILE →</em>
+  </div>
+</a>
+<a class="folder" href="./gallery/lulu.html" style="--portrait-bg:#FBEDF5">
+  <div class="thumb"><img src="../images/portraits/lulu.webp" alt="루루 전신 이미지"></div>
+  <div class="folder-info">
+    <div><span>PHOTO ARCHIVE</span><b>LULU</b></div>
+    <em>01 FILE →</em>
+  </div>
+</a>
+<a class="folder" href="./gallery/rio.html" style="--portrait-bg:#EEEAFD">
+  <div class="thumb"><img src="../images/portraits/rio.webp" alt="리오 전신 이미지"></div>
+  <div class="folder-info">
+    <div><span>PHOTO ARCHIVE</span><b>RIO</b></div>
+    <em>01 FILE →</em>
+  </div>
+</a>
+<a class="folder" href="./gallery/popo.html" style="--portrait-bg:#F8EEE3">
+  <div class="thumb"><img src="../images/portraits/popo.webp" alt="포포 전신 이미지"></div>
+  <div class="folder-info">
+    <div><span>PHOTO ARCHIVE</span><b>POPO</b></div>
+    <em>01 FILE →</em>
+  </div>
+</a>
+<a class="folder" href="./gallery/nero.html" style="--portrait-bg:#E8EFFB">
+  <div class="thumb"><img src="../images/portraits/nero.webp" alt="네로 전신 이미지"></div>
+  <div class="folder-info">
+    <div><span>PHOTO ARCHIVE</span><b>NERO</b></div>
+    <em>01 FILE →</em>
+  </div>
+</a>
+<a class="folder ian unknown-folder" href="./gallery/ian.html" aria-label="정체불명의 시각 기록 열람">
+  <span class="unknown-noise" aria-hidden="true"></span>
+</a>
+  </section>
+  <footer class="footer"><span>CITY NETWORK · VISUAL ARCHIVE</span><span>6 REGISTERED / 1 UNKNOWN</span></footer>
+</main>
+</body>
+</html>
