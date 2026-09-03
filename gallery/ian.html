@@ -345,6 +345,68 @@ h1{margin:14px 0 0;font:900 clamp(48px,8vw,100px)/.88 "Arial Narrow",Arial,sans-
   }
 }
 
+
+/* v11 / mobile natural-ratio correction
+   No forced aspect ratios on mobile. Let each image define its own height. */
+@media(max-width:760px){
+  .album-grid{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+
+  /* FILE 001 / ID portrait
+     Smaller than the landscape record, but keep the source's own ratio. */
+  .photo.hero-photo.id-portrait{
+    display:block;
+    width:72%;
+    max-width:430px;
+    align-self:center;
+    height:auto;
+    min-height:0;
+    aspect-ratio:auto;
+    overflow:hidden;
+  }
+
+  .photo.hero-photo.id-portrait img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-width:none;
+    max-height:none;
+    object-fit:contain;
+    object-position:center center;
+  }
+
+  /* FILE 002 / work record
+     Full width, natural source ratio: no letterboxing and no artificial height. */
+  .album-grid > :nth-child(2){
+    display:block;
+    width:100%;
+    align-self:stretch;
+    height:auto;
+    min-height:0;
+    aspect-ratio:auto;
+    overflow:hidden;
+  }
+
+  .album-grid > :nth-child(2) img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-width:none;
+    max-height:none;
+    object-fit:contain;
+    object-position:center center;
+  }
+
+  /* Remaining files keep the normal mobile archive layout. */
+  .album-grid > :nth-child(n+3){
+    width:100%;
+    align-self:stretch;
+  }
+}
+
 </style>
 </head>
 <body class="archive" style="--accent:#c4a164">
